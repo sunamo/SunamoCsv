@@ -1,3 +1,5 @@
+namespace SunamoCsv.Data;
+
 public class GoogleContactExportRow : INotifyPropertyChanged
 {
     string name = "";

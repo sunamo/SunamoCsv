@@ -3,12 +3,10 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-    </ProjectReference>
+    <PackageReference Include="SunamoShared" Version="23.12.17.2" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CsvHelper\">
-    </Folder>
+    <Folder Include="CsvHelper\"></Folder>
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

@@ -1,3 +1,5 @@
+namespace SunamoCsv;
+
 /// <summary>
 /// Používat CsvFile místo toho
 ///
