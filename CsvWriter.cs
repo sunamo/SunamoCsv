@@ -1,7 +1,3 @@
-using SunamoFileSystem;
-using SunamoString;
-using SunamoValues;
-
 namespace SunamoCsv;
 
 /// <summary>
@@ -75,7 +71,7 @@ public sealed class CsvWriter : IDisposable
     /// <param name="encoding">Encoding</param>
     public void WriteCsv(CsvFile csvFile, string filePath, Encoding encoding)
     {
-        if (FS.ExistsFile(filePath))
+        if (File.Exists(filePath))
             File.Delete(filePath);
 
         using (StreamWriter writer = new StreamWriter(filePath, false, encoding ?? Encoding.UTF8))
@@ -164,7 +160,7 @@ public sealed class CsvWriter : IDisposable
     /// <param name="encoding">Encoding</param>
     public void WriteCsv(DataTable dataTable, string filePath, Encoding encoding)
     {
-        if (FS.ExistsFile(filePath))
+        if (File.Exists(filePath))
             File.Delete(filePath);
 
         using (StreamWriter writer = new StreamWriter(filePath, false, encoding ?? Encoding.UTF8))
@@ -285,7 +281,7 @@ public sealed class CsvWriter : IDisposable
                 fieldValue = fieldValue.Replace("\n", CarriageReturnAndLineFeedReplacement);
             }
 
-            writer.Write(SH.Format2("{0}{1}{0}{2}",
+            writer.Write(SHFormat.Format2("{0}{1}{0}{2}",
                 (quotesRequired || escapeQuotes ? AllStrings.qm : string.Empty),
                 fieldValue,
                 (i < (fields.Count - 1) ? AllStrings.comma : string.Empty)));

@@ -1,8 +1,3 @@
-using SunamoCollections;
-using SunamoDateTime.DT;
-using SunamoExceptions.OnlyInSE;
-using SunamoString;
-
 namespace SunamoCsv;
 
 /// <summary>
@@ -126,7 +121,7 @@ public sealed class CsvFile
         get
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no record at index {0}.", recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
 
             return Records[recordIndex];
         }
@@ -144,23 +139,23 @@ public sealed class CsvFile
         get
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no record at index {0}.", recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
             return record.Fields[fieldIndex];
         }
         set
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no record at index {0}.", recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
 
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no field at index {0}.", fieldIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0}.", fieldIndex));
 
             record.Fields[fieldIndex] = value;
         }
@@ -176,7 +171,7 @@ public sealed class CsvFile
         get
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no record at index {0}.", recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
 
@@ -192,17 +187,17 @@ public sealed class CsvFile
             }
 
             if (fieldIndex == -1)
-                ThrowEx.Custom(SH.Format2("There is no field header with the name '{0}'", fieldName));
+                ThrowEx.Custom(SHFormat.Format2("There is no field header with the name '{0}'", fieldName));
 
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
             return record.Fields[fieldIndex];
         }
         set
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no record at index {0}.", recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
 
@@ -218,10 +213,10 @@ public sealed class CsvFile
             }
 
             if (fieldIndex == -1)
-                ThrowEx.Custom(SH.Format2("There is no field header with the name '{0}'", fieldName));
+                ThrowEx.Custom(SHFormat.Format2("There is no field header with the name '{0}'", fieldName));
 
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
             record.Fields[fieldIndex] = value;
         }

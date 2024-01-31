@@ -1,17 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>24.1.10.1</Version>
+    <Version>24.1.24.1</Version>
     <Description>Working with CSV (comma-separated values)</Description>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="CsvHelper\"></Folder>
+    <Folder Include="CsvHelper\">
+    </Folder>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoDateTime" Version="24.1.10.1" />
-    <PackageReference Include="SunamoExceptions" Version="24.1.11.1" />
-    <PackageReference Include="SunamoFileSystem" Version="24.1.12.1" />
-    <PackageReference Include="SunamoString" Version="24.1.10.1" />
+    <PackageReference Include="SunamoDateTime" Version="24.1.23.1" />
+    <PackageReference Include="SunamoFileSystem" Version="24.1.23.1" />
+    <PackageReference Include="SunamoString" Version="24.1.22.1" />
+    <PackageReference Include="SunamoStringFormat" Version="24.1.23.1" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

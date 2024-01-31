@@ -1,8 +1,3 @@
-using SunamoExceptions.OnlyInSE;
-using SunamoFileSystem;
-using SunamoString;
-using SunamoValues;
-
 namespace SunamoCsv;
 
 /// <summary>
@@ -154,8 +149,8 @@ public sealed class CsvReader : IDisposable
     /// <param name="encoding"></param>
     private void Initialise(string filePath, Encoding encoding)
     {
-        if (!FS.ExistsFile(filePath))
-            ThrowEx.Custom(SH.Format2("The file '{0}' does not exist.", filePath));
+        if (!File.Exists(filePath))
+            ThrowEx.Custom(SHFormat.Format2("The file '{0}' does not exist.", filePath));
 
         _fileStream = File.OpenRead(filePath);
         Initialise(_fileStream, encoding);
