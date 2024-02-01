@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>24.1.24.1</Version>
+    <Version>24.2.1.2</Version>
     <Description>Working with CSV (comma-separated values)</Description>
   </PropertyGroup>
   <ItemGroup>
@@ -9,10 +9,8 @@
     </Folder>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoDateTime" Version="24.1.23.1" />
-    <PackageReference Include="SunamoFileSystem" Version="24.1.23.1" />
-    <PackageReference Include="SunamoString" Version="24.1.22.1" />
-    <PackageReference Include="SunamoStringFormat" Version="24.1.23.1" />
+    <PackageReference Include="SunamoExceptions" Version="24.2.1.1" />
+    <PackageReference Include="SunamoValues" Version="24.2.1.1" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

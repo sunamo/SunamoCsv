@@ -63,7 +63,7 @@ public sealed class CsvFile
         var objects = Objects(v);
         foreach (var item in objects)
         {
-            dt = DTHelperCs.ParseTimeCzech(item[0]);
+            dt = DateTime.Parse(item[0]); //DTHelperCs.ParseTimeCzech(item[0]);
             if (dt != DateTime.MinValue)
             {
                 list.Add(new System.DateTime(1, 1, 1, dt.Hour, dt.Minute, dt.Second));
@@ -86,10 +86,10 @@ public sealed class CsvFile
         foreach (var item in Records)
         {
             o = new List<string>(columns.Length);
-            CA.InitFillWith(o, columns.Length);
+            //CA.InitFillWith(o, columns.Length);
             for (i = 0; i < columns.Length; i++)
             {
-                o[i] = item.Fields[columns[i]];
+                o.Add(item.Fields[columns[i]]);
             }
             result.Add(o);
         }
@@ -121,7 +121,7 @@ public sealed class CsvFile
         get
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
+                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
 
             return Records[recordIndex];
         }
@@ -139,23 +139,23 @@ public sealed class CsvFile
         get
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
+                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
             return record.Fields[fieldIndex];
         }
         set
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
+                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
 
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0}.", fieldIndex));
+                throw new Exception(string.Format("There is no field at index {0}.", fieldIndex));
 
             record.Fields[fieldIndex] = value;
         }
@@ -171,7 +171,7 @@ public sealed class CsvFile
         get
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
+                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
 
@@ -187,17 +187,17 @@ public sealed class CsvFile
             }
 
             if (fieldIndex == -1)
-                ThrowEx.Custom(SHFormat.Format2("There is no field header with the name '{0}'", fieldName));
+                throw new Exception(string.Format("There is no field header with the name '{0}'", fieldName));
 
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
             return record.Fields[fieldIndex];
         }
         set
         {
             if (recordIndex > (Records.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no record at index {0}.", recordIndex));
+                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
 
             CsvRecord record = Records[recordIndex];
 
@@ -213,10 +213,10 @@ public sealed class CsvFile
             }
 
             if (fieldIndex == -1)
-                ThrowEx.Custom(SHFormat.Format2("There is no field header with the name '{0}'", fieldName));
+                throw new Exception(string.Format("There is no field header with the name '{0}'", fieldName));
 
             if (fieldIndex > (record.Fields.Count - 1))
-                ThrowEx.Custom(SHFormat.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
             record.Fields[fieldIndex] = value;
         }

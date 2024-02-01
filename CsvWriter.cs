@@ -1,5 +1,8 @@
 namespace SunamoCsv;
 
+using SunamoValues;
+
+
 /// <summary>
 /// Class to write data to a csv file
 /// Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
@@ -281,7 +284,7 @@ public sealed class CsvWriter : IDisposable
                 fieldValue = fieldValue.Replace("\n", CarriageReturnAndLineFeedReplacement);
             }
 
-            writer.Write(SHFormat.Format2("{0}{1}{0}{2}",
+            writer.Write(/*string.Format*/ string.Format("{0}{1}{0}{2}",
                 (quotesRequired || escapeQuotes ? AllStrings.qm : string.Empty),
                 fieldValue,
                 (i < (fields.Count - 1) ? AllStrings.comma : string.Empty)));

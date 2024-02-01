@@ -1,4 +1,8 @@
+
 namespace SunamoCsv;
+using SunamoExceptions;
+using SunamoValues;
+
 
 /// <summary>
 /// Používat CsvFile místo toho
@@ -150,7 +154,7 @@ public sealed class CsvReader : IDisposable
     private void Initialise(string filePath, Encoding encoding)
     {
         if (!File.Exists(filePath))
-            ThrowEx.Custom(SHFormat.Format2("The file '{0}' does not exist.", filePath));
+            throw new Exception(/*string.Format*/ string.Format("The file '{0}' does not exist.", filePath));
 
         _fileStream = File.OpenRead(filePath);
         Initialise(_fileStream, encoding);
@@ -164,7 +168,7 @@ public sealed class CsvReader : IDisposable
     private void Initialise(Stream stream, Encoding encoding)
     {
         if (stream == null)
-            ThrowEx.Custom("The supplied stream is null" + ".");
+            throw new Exception("The supplied stream is null" + ".");
 
         _stream = stream;
         _stream.Position = 0;
@@ -180,7 +184,7 @@ public sealed class CsvReader : IDisposable
     private void Initialise(Encoding encoding, string csvContent)
     {
         if (csvContent == null)
-            ThrowEx.Custom("The supplied csvContent is null" + ".");
+            throw new Exception("The supplied csvContent is null" + ".");
 
         _encoding = (encoding ?? Encoding.UTF8);
 
