@@ -1,6 +1,5 @@
 
 namespace SunamoCsv;
-using SunamoExceptions;
 using SunamoValues;
 
 
