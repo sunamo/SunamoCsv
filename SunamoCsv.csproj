@@ -9,8 +9,6 @@
     </Folder>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoExceptions" Version="24.2.6.3" />
-    <PackageReference Include="SunamoValues" Version="24.2.6.3" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
