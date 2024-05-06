@@ -15,7 +15,7 @@ public sealed class CsvFile
 
     public CsvFile(char delimiter)
     {
-        CsvReader.delimiter = delimiter;
+        SunamoCsvReader.delimiter = delimiter;
     }
 
     #region Properties
@@ -256,7 +256,7 @@ public sealed class CsvFile
     /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool _trimColumns)
     {
-        using (CsvReader reader = new CsvReader(filePath, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
+        using (SunamoCsvReader reader = new SunamoCsvReader(filePath, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
         {
             PopulateCsvFile(reader);
         }
@@ -292,7 +292,7 @@ public sealed class CsvFile
     /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(Stream stream, Encoding encoding, bool hasHeaderRow, bool _trimColumns)
     {
-        using (CsvReader reader = new CsvReader(stream, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
+        using (SunamoCsvReader reader = new SunamoCsvReader(stream, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
         {
             PopulateCsvFile(reader);
         }
@@ -328,7 +328,7 @@ public sealed class CsvFile
     /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(bool hasHeaderRow, string csvContent, Encoding encoding, bool _trimColumns)
     {
-        using (CsvReader reader = new CsvReader(encoding, csvContent) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
+        using (SunamoCsvReader reader = new SunamoCsvReader(encoding, csvContent) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
         {
             PopulateCsvFile(reader);
         }
@@ -338,7 +338,7 @@ public sealed class CsvFile
     /// Populates the current instance using the CsvReader object
     /// </summary>
     /// <param name="reader">CsvReader</param>
-    private void PopulateCsvFile(CsvReader reader)
+    private void PopulateCsvFile(SunamoCsvReader reader)
     {
         Headers.Clear();
         Records.Clear();

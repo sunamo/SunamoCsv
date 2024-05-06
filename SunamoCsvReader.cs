@@ -9,9 +9,9 @@ using SunamoValues;
 /// Class to read csv content from various sources
 /// Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
 /// </summary>
-public sealed class CsvReader : IDisposable
+public sealed class SunamoCsvReader : IDisposable
 {
-    static Type type = typeof(CsvReader);
+    static Type type = typeof(SunamoCsvReader);
 
     #region Members
 
@@ -92,7 +92,7 @@ public sealed class CsvReader : IDisposable
     /// Initialises the reader to work from a file
     /// </summary>
     /// <param name="filePath">File path</param>
-    public CsvReader(string filePath)
+    public SunamoCsvReader(string filePath)
     {
         _type = TypeSource.File;
         Initialise(filePath, Encoding.UTF8);
@@ -103,7 +103,7 @@ public sealed class CsvReader : IDisposable
     /// </summary>
     /// <param name="filePath">File path</param>
     /// <param name="encoding">Encoding</param>
-    public CsvReader(string filePath, Encoding encoding)
+    public SunamoCsvReader(string filePath, Encoding encoding)
     {
         _type = TypeSource.File;
         Initialise(filePath, encoding);
@@ -113,7 +113,7 @@ public sealed class CsvReader : IDisposable
     /// Initialises the reader to work from an existing stream
     /// </summary>
     /// <param name="stream">Stream</param>
-    public CsvReader(Stream stream)
+    public SunamoCsvReader(Stream stream)
     {
         _type = TypeSource.Stream;
         Initialise(stream, Encoding.UTF8);
@@ -124,7 +124,7 @@ public sealed class CsvReader : IDisposable
     /// </summary>
     /// <param name="stream">Stream</param>
     /// <param name="encoding">Encoding</param>
-    public CsvReader(Stream stream, Encoding encoding)
+    public SunamoCsvReader(Stream stream, Encoding encoding)
     {
         _type = TypeSource.Stream;
         Initialise(stream, encoding);
@@ -135,7 +135,7 @@ public sealed class CsvReader : IDisposable
     /// </summary>
     /// <param name="encoding"></param>
     /// <param name="csvContent"></param>
-    public CsvReader(Encoding encoding, string csvContent)
+    public SunamoCsvReader(Encoding encoding, string csvContent)
     {
         _type = TypeSource.String;
         Initialise(encoding, csvContent);
