@@ -1,3 +1,5 @@
+
+namespace SunamoCsv;
 public class TranslateAble
 {
     
