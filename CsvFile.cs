@@ -362,38 +362,3 @@ public sealed class CsvFile
 
     #endregion Methods
 }
-
-/// <summary>
-/// Class for a collection of CsvRecord objects
-/// </summary>
-[Serializable]
-public sealed class CsvRecords : List<CsvRecord>
-{
-}
-
-/// <summary>
-/// Csv record class
-/// </summary>
-[Serializable]
-public sealed class CsvRecord
-{
-    #region Properties
-
-    /// <summary>
-    /// Gets the Fields in the record
-    /// </summary>
-    public readonly List<string> Fields = new List<string>();
-
-    /// <summary>
-    /// Gets the number of fields in the record
-    /// </summary>
-    public int FieldCount
-    {
-        get
-        {
-            return Fields.Count;
-        }
-    }
-
-    #endregion Properties
-}
