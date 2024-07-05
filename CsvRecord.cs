@@ -1,4 +1,4 @@
-﻿namespace SunamoCsv;
+namespace SunamoCsv;
 
 /// <summary>
 /// Csv record class

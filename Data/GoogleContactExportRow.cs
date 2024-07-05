@@ -1,4 +1,4 @@
-namespace SunamoCsv;
+namespace SunamoCsv.Data;
 
 public class GoogleContactExportRow : INotifyPropertyChanged
 {

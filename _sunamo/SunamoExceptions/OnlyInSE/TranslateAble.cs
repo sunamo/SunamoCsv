@@ -1,5 +1,5 @@
 
-namespace SunamoCsv;
+namespace SunamoCsv._sunamo.SunamoExceptions.OnlyInSE;
 internal class TranslateAble
 {
     

@@ -1,4 +1,4 @@
-﻿namespace SunamoCsv;
+namespace SunamoCsv;
 
 /// <summary>
 /// Class for a collection of CsvRecord objects

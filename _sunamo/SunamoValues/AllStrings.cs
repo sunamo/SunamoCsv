@@ -1,5 +1,5 @@
 
-namespace SunamoCsv;
+namespace SunamoCsv._sunamo.SunamoValues;
 internal class AllStrings
 {
     internal const string dot = ".";

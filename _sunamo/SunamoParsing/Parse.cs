@@ -1,4 +1,4 @@
-namespace SunamoCsv;
+namespace SunamoCsv._sunamo.SunamoParsing;
 
 
 internal class Parse
