@@ -1,8 +1,5 @@
 namespace SunamoCsv;
 
-
-
-
 /// <summary>
 /// Class to write data to a csv file
 /// Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
