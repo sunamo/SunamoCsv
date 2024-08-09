@@ -2,181 +2,681 @@ namespace SunamoCsv.Data;
 
 public class GoogleContactExportRow : INotifyPropertyChanged
 {
-    string name = "";
-    public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
+    private string additionalName = "";
 
-    string givenName = "";
-    public string GivenName { get { return givenName; } set { givenName = value; OnPropertyChanged("GivenName"); } }
+    private string additionalNameYomi = "";
 
-    string additionalName = "";
-    public string AdditionalName { get { return additionalName; } set { additionalName = value; OnPropertyChanged("AdditionalName"); } }
+    private string address1City = "";
 
-    string familyName = "";
-    public string FamilyName { get { return familyName; } set { familyName = value; OnPropertyChanged("FamilyName"); } }
+    private string address1Country = "";
 
-    string yomiName = "";
-    public string YomiName { get { return yomiName; } set { yomiName = value; OnPropertyChanged("YomiName"); } }
+    private string address1ExtendedAddress = "";
 
-    string givenNameYomi = "";
-    public string GivenNameYomi { get { return givenNameYomi; } set { givenNameYomi = value; OnPropertyChanged("GivenNameYomi"); } }
+    private string address1Formatted = "";
 
-    string additionalNameYomi = "";
-    public string AdditionalNameYomi { get { return additionalNameYomi; } set { additionalNameYomi = value; OnPropertyChanged("AdditionalNameYomi"); } }
+    private string address1POBox = "";
 
-    string familyNameYomi = "";
-    public string FamilyNameYomi { get { return familyNameYomi; } set { familyNameYomi = value; OnPropertyChanged("FamilyNameYomi"); } }
+    private string address1PostalCode = "";
 
-    string namePrefix = "";
-    public string NamePrefix { get { return namePrefix; } set { namePrefix = value; OnPropertyChanged("NamePrefix"); } }
+    private string address1Region = "";
 
-    string nameSuffix = "";
-    public string NameSuffix { get { return nameSuffix; } set { nameSuffix = value; OnPropertyChanged("NameSuffix"); } }
+    private string address1Street = "";
 
-    string initials = "";
-    public string Initials { get { return initials; } set { initials = value; OnPropertyChanged("Initials"); } }
+    private string address1Type = "";
 
-    string nickname = "";
-    public string Nickname { get { return nickname; } set { nickname = value; OnPropertyChanged("Nickname"); } }
+    private string billingInformation = "";
 
-    string shortName = "";
-    public string ShortName { get { return shortName; } set { shortName = value; OnPropertyChanged("ShortName"); } }
+    private string birthday = "";
 
-    string maidenName = "";
-    public string MaidenName { get { return maidenName; } set { maidenName = value; OnPropertyChanged("MaidenName"); } }
+    private string customField1Type = "";
 
-    string birthday = "";
-    public string Birthday { get { return birthday; } set { birthday = value; OnPropertyChanged("Birthday"); } }
+    private string customField1Value = "";
 
-    string gender = "";
-    public string Gender { get { return gender; } set { gender = value; OnPropertyChanged("Gender"); } }
+    private string customField2Type = "";
 
-    string location = "";
-    public string Location { get { return location; } set { location = value; OnPropertyChanged("Location"); } }
+    private string customField2Value = "";
 
-    string billingInformation = "";
-    public string BillingInformation { get { return billingInformation; } set { billingInformation = value; OnPropertyChanged("BillingInformation"); } }
+    private string directoryServer = "";
 
-    string directoryServer = "";
-    public string DirectoryServer { get { return directoryServer; } set { directoryServer = value; OnPropertyChanged("DirectoryServer"); } }
+    private string eMail1Type = "";
 
-    string mileage = "";
-    public string Mileage { get { return mileage; } set { mileage = value; OnPropertyChanged("Mileage"); } }
+    private string eMail1Value = "";
 
-    string occupation = "";
-    public string Occupation { get { return occupation; } set { occupation = value; OnPropertyChanged("Occupation"); } }
+    private string familyName = "";
 
-    string hobby = "";
-    public string Hobby { get { return hobby; } set { hobby = value; OnPropertyChanged("Hobby"); } }
+    private string familyNameYomi = "";
 
-    string sensitivity = "";
-    public string Sensitivity { get { return sensitivity; } set { sensitivity = value; OnPropertyChanged("Sensitivity"); } }
+    private string gender = "";
 
-    string priority = "";
-    public string Priority { get { return priority; } set { priority = value; OnPropertyChanged("Priority"); } }
+    private string givenName = "";
 
-    string subject = "";
-    public string Subject { get { return subject; } set { subject = value; OnPropertyChanged("Subject"); } }
+    private string givenNameYomi = "";
 
-    string notes = "";
-    public string Notes { get { return notes; } set { notes = value; OnPropertyChanged("Notes"); } }
+    private string groupMembership = "";
 
-    string language = "";
-    public string Language { get { return language; } set { language = value; OnPropertyChanged("Language"); } }
+    private string hobby = "";
 
-    string photo = "";
-    public string Photo { get { return photo; } set { photo = value; OnPropertyChanged("Photo"); } }
+    private string initials = "";
 
-    string groupMembership = "";
-    public string GroupMembership { get { return groupMembership; } set { groupMembership = value; OnPropertyChanged("GroupMembership"); } }
+    private string language = "";
 
-    string eMail1Type = "";
-    public string EMail1Type { get { return eMail1Type; } set { eMail1Type = value; OnPropertyChanged("EMail1Type"); } }
+    private string location = "";
 
-    string eMail1Value = "";
-    public string EMail1Value { get { return eMail1Value; } set { eMail1Value = value; OnPropertyChanged("EMail1Value"); } }
+    private string maidenName = "";
 
-    string phone1Type = "";
-    public string Phone1Type { get { return phone1Type; } set { phone1Type = value; OnPropertyChanged("Phone1Type"); } }
+    private string mileage = "";
+    private string name = "";
 
-    string phone1Value = "";
-    public string Phone1Value { get { return phone1Value; } set { phone1Value = value; OnPropertyChanged("Phone1Value"); } }
+    private string namePrefix = "";
 
-    string address1Type = "";
-    public string Address1Type { get { return address1Type; } set { address1Type = value; OnPropertyChanged("Address1Type"); } }
+    private string nameSuffix = "";
 
-    string address1Formatted = "";
-    public string Address1Formatted { get { return address1Formatted; } set { address1Formatted = value; OnPropertyChanged("Address1Formatted"); } }
+    private string nickname = "";
 
-    string address1Street = "";
-    public string Address1Street { get { return address1Street; } set { address1Street = value; OnPropertyChanged("Address1Street"); } }
+    private string notes = "";
 
-    string address1City = "";
-    public string Address1City { get { return address1City; } set { address1City = value; OnPropertyChanged("Address1City"); } }
+    private string occupation = "";
 
-    string address1POBox = "";
-    public string Address1POBox { get { return address1POBox; } set { address1POBox = value; OnPropertyChanged("Address1POBox"); } }
+    private string organization1Department = "";
 
-    string address1Region = "";
-    public string Address1Region { get { return address1Region; } set { address1Region = value; OnPropertyChanged("Address1Region"); } }
+    private string organization1JobDescription = "";
 
-    string address1PostalCode = "";
-    public string Address1PostalCode { get { return address1PostalCode; } set { address1PostalCode = value; OnPropertyChanged("Address1PostalCode"); } }
+    private string organization1Location = "";
 
-    string address1Country = "";
-    public string Address1Country { get { return address1Country; } set { address1Country = value; OnPropertyChanged("Address1Country"); } }
+    private string organization1Name = "";
 
-    string address1ExtendedAddress = "";
-    public string Address1ExtendedAddress { get { return address1ExtendedAddress; } set { address1ExtendedAddress = value; OnPropertyChanged("Address1ExtendedAddress"); } }
+    private string organization1Symbol = "";
 
-    string organization1Type = "";
-    public string Organization1Type { get { return organization1Type; } set { organization1Type = value; OnPropertyChanged("Organization1Type"); } }
+    private string organization1Title = "";
 
-    string organization1Name = "";
-    public string Organization1Name { get { return organization1Name; } set { organization1Name = value; OnPropertyChanged("Organization1Name"); } }
+    private string organization1Type = "";
 
-    string organization1YomiName = "";
-    public string Organization1YomiName { get { return organization1YomiName; } set { organization1YomiName = value; OnPropertyChanged("Organization1YomiName"); } }
+    private string organization1YomiName = "";
 
-    string organization1Title = "";
-    public string Organization1Title { get { return organization1Title; } set { organization1Title = value; OnPropertyChanged("Organization1Title"); } }
+    private string phone1Type = "";
 
-    string organization1Department = "";
-    public string Organization1Department { get { return organization1Department; } set { organization1Department = value; OnPropertyChanged("Organization1Department"); } }
+    private string phone1Value = "";
 
-    string organization1Symbol = "";
-    public string Organization1Symbol { get { return organization1Symbol; } set { organization1Symbol = value; OnPropertyChanged("Organization1Symbol"); } }
+    private string photo = "";
 
-    string organization1Location = "";
-    public string Organization1Location { get { return organization1Location; } set { organization1Location = value; OnPropertyChanged("Organization1Location"); } }
+    private string priority = "";
 
-    string organization1JobDescription = "";
-    public string Organization1JobDescription { get { return organization1JobDescription; } set { organization1JobDescription = value; OnPropertyChanged("Organization1JobDescription"); } }
+    private string sensitivity = "";
 
-    string website1Type = "";
-    public string Website1Type { get { return website1Type; } set { website1Type = value; OnPropertyChanged("Website1Type"); } }
+    private string shortName = "";
 
-    string website1Value = "";
-    public string Website1Value { get { return website1Value; } set { website1Value = value; OnPropertyChanged("Website1Value"); } }
+    private string subject = "";
 
-    string customField1Type = "";
-    public string CustomField1Type { get { return customField1Type; } set { customField1Type = value; OnPropertyChanged("CustomField1Type"); } }
+    private string website1Type = "";
 
-    string customField1Value = "";
-    public string CustomField1Value { get { return customField1Value; } set { customField1Value = value; OnPropertyChanged("CustomField1Value"); } }
+    private string website1Value = "";
 
-    string customField2Type = "";
-    public string CustomField2Type { get { return customField2Type; } set { customField2Type = value; OnPropertyChanged("CustomField2Type"); } }
+    private string yomiName = "";
 
-    string customField2Value = "";
+    public string Name
+    {
+        get => name;
+        set
+        {
+            name = value;
+            OnPropertyChanged("Name");
+        }
+    }
+
+    public string GivenName
+    {
+        get => givenName;
+        set
+        {
+            givenName = value;
+            OnPropertyChanged("GivenName");
+        }
+    }
+
+    public string AdditionalName
+    {
+        get => additionalName;
+        set
+        {
+            additionalName = value;
+            OnPropertyChanged("AdditionalName");
+        }
+    }
+
+    public string FamilyName
+    {
+        get => familyName;
+        set
+        {
+            familyName = value;
+            OnPropertyChanged("FamilyName");
+        }
+    }
+
+    public string YomiName
+    {
+        get => yomiName;
+        set
+        {
+            yomiName = value;
+            OnPropertyChanged("YomiName");
+        }
+    }
+
+    public string GivenNameYomi
+    {
+        get => givenNameYomi;
+        set
+        {
+            givenNameYomi = value;
+            OnPropertyChanged("GivenNameYomi");
+        }
+    }
+
+    public string AdditionalNameYomi
+    {
+        get => additionalNameYomi;
+        set
+        {
+            additionalNameYomi = value;
+            OnPropertyChanged("AdditionalNameYomi");
+        }
+    }
+
+    public string FamilyNameYomi
+    {
+        get => familyNameYomi;
+        set
+        {
+            familyNameYomi = value;
+            OnPropertyChanged("FamilyNameYomi");
+        }
+    }
+
+    public string NamePrefix
+    {
+        get => namePrefix;
+        set
+        {
+            namePrefix = value;
+            OnPropertyChanged("NamePrefix");
+        }
+    }
+
+    public string NameSuffix
+    {
+        get => nameSuffix;
+        set
+        {
+            nameSuffix = value;
+            OnPropertyChanged("NameSuffix");
+        }
+    }
+
+    public string Initials
+    {
+        get => initials;
+        set
+        {
+            initials = value;
+            OnPropertyChanged("Initials");
+        }
+    }
+
+    public string Nickname
+    {
+        get => nickname;
+        set
+        {
+            nickname = value;
+            OnPropertyChanged("Nickname");
+        }
+    }
+
+    public string ShortName
+    {
+        get => shortName;
+        set
+        {
+            shortName = value;
+            OnPropertyChanged("ShortName");
+        }
+    }
+
+    public string MaidenName
+    {
+        get => maidenName;
+        set
+        {
+            maidenName = value;
+            OnPropertyChanged("MaidenName");
+        }
+    }
+
+    public string Birthday
+    {
+        get => birthday;
+        set
+        {
+            birthday = value;
+            OnPropertyChanged("Birthday");
+        }
+    }
+
+    public string Gender
+    {
+        get => gender;
+        set
+        {
+            gender = value;
+            OnPropertyChanged("Gender");
+        }
+    }
+
+    public string Location
+    {
+        get => location;
+        set
+        {
+            location = value;
+            OnPropertyChanged("Location");
+        }
+    }
+
+    public string BillingInformation
+    {
+        get => billingInformation;
+        set
+        {
+            billingInformation = value;
+            OnPropertyChanged("BillingInformation");
+        }
+    }
+
+    public string DirectoryServer
+    {
+        get => directoryServer;
+        set
+        {
+            directoryServer = value;
+            OnPropertyChanged("DirectoryServer");
+        }
+    }
+
+    public string Mileage
+    {
+        get => mileage;
+        set
+        {
+            mileage = value;
+            OnPropertyChanged("Mileage");
+        }
+    }
+
+    public string Occupation
+    {
+        get => occupation;
+        set
+        {
+            occupation = value;
+            OnPropertyChanged("Occupation");
+        }
+    }
+
+    public string Hobby
+    {
+        get => hobby;
+        set
+        {
+            hobby = value;
+            OnPropertyChanged("Hobby");
+        }
+    }
+
+    public string Sensitivity
+    {
+        get => sensitivity;
+        set
+        {
+            sensitivity = value;
+            OnPropertyChanged("Sensitivity");
+        }
+    }
+
+    public string Priority
+    {
+        get => priority;
+        set
+        {
+            priority = value;
+            OnPropertyChanged("Priority");
+        }
+    }
+
+    public string Subject
+    {
+        get => subject;
+        set
+        {
+            subject = value;
+            OnPropertyChanged("Subject");
+        }
+    }
+
+    public string Notes
+    {
+        get => notes;
+        set
+        {
+            notes = value;
+            OnPropertyChanged("Notes");
+        }
+    }
+
+    public string Language
+    {
+        get => language;
+        set
+        {
+            language = value;
+            OnPropertyChanged("Language");
+        }
+    }
+
+    public string Photo
+    {
+        get => photo;
+        set
+        {
+            photo = value;
+            OnPropertyChanged("Photo");
+        }
+    }
+
+    public string GroupMembership
+    {
+        get => groupMembership;
+        set
+        {
+            groupMembership = value;
+            OnPropertyChanged("GroupMembership");
+        }
+    }
+
+    public string EMail1Type
+    {
+        get => eMail1Type;
+        set
+        {
+            eMail1Type = value;
+            OnPropertyChanged("EMail1Type");
+        }
+    }
+
+    public string EMail1Value
+    {
+        get => eMail1Value;
+        set
+        {
+            eMail1Value = value;
+            OnPropertyChanged("EMail1Value");
+        }
+    }
+
+    public string Phone1Type
+    {
+        get => phone1Type;
+        set
+        {
+            phone1Type = value;
+            OnPropertyChanged("Phone1Type");
+        }
+    }
+
+    public string Phone1Value
+    {
+        get => phone1Value;
+        set
+        {
+            phone1Value = value;
+            OnPropertyChanged("Phone1Value");
+        }
+    }
+
+    public string Address1Type
+    {
+        get => address1Type;
+        set
+        {
+            address1Type = value;
+            OnPropertyChanged("Address1Type");
+        }
+    }
+
+    public string Address1Formatted
+    {
+        get => address1Formatted;
+        set
+        {
+            address1Formatted = value;
+            OnPropertyChanged("Address1Formatted");
+        }
+    }
+
+    public string Address1Street
+    {
+        get => address1Street;
+        set
+        {
+            address1Street = value;
+            OnPropertyChanged("Address1Street");
+        }
+    }
+
+    public string Address1City
+    {
+        get => address1City;
+        set
+        {
+            address1City = value;
+            OnPropertyChanged("Address1City");
+        }
+    }
+
+    public string Address1POBox
+    {
+        get => address1POBox;
+        set
+        {
+            address1POBox = value;
+            OnPropertyChanged("Address1POBox");
+        }
+    }
+
+    public string Address1Region
+    {
+        get => address1Region;
+        set
+        {
+            address1Region = value;
+            OnPropertyChanged("Address1Region");
+        }
+    }
+
+    public string Address1PostalCode
+    {
+        get => address1PostalCode;
+        set
+        {
+            address1PostalCode = value;
+            OnPropertyChanged("Address1PostalCode");
+        }
+    }
+
+    public string Address1Country
+    {
+        get => address1Country;
+        set
+        {
+            address1Country = value;
+            OnPropertyChanged("Address1Country");
+        }
+    }
+
+    public string Address1ExtendedAddress
+    {
+        get => address1ExtendedAddress;
+        set
+        {
+            address1ExtendedAddress = value;
+            OnPropertyChanged("Address1ExtendedAddress");
+        }
+    }
+
+    public string Organization1Type
+    {
+        get => organization1Type;
+        set
+        {
+            organization1Type = value;
+            OnPropertyChanged("Organization1Type");
+        }
+    }
+
+    public string Organization1Name
+    {
+        get => organization1Name;
+        set
+        {
+            organization1Name = value;
+            OnPropertyChanged("Organization1Name");
+        }
+    }
+
+    public string Organization1YomiName
+    {
+        get => organization1YomiName;
+        set
+        {
+            organization1YomiName = value;
+            OnPropertyChanged("Organization1YomiName");
+        }
+    }
+
+    public string Organization1Title
+    {
+        get => organization1Title;
+        set
+        {
+            organization1Title = value;
+            OnPropertyChanged("Organization1Title");
+        }
+    }
+
+    public string Organization1Department
+    {
+        get => organization1Department;
+        set
+        {
+            organization1Department = value;
+            OnPropertyChanged("Organization1Department");
+        }
+    }
+
+    public string Organization1Symbol
+    {
+        get => organization1Symbol;
+        set
+        {
+            organization1Symbol = value;
+            OnPropertyChanged("Organization1Symbol");
+        }
+    }
+
+    public string Organization1Location
+    {
+        get => organization1Location;
+        set
+        {
+            organization1Location = value;
+            OnPropertyChanged("Organization1Location");
+        }
+    }
+
+    public string Organization1JobDescription
+    {
+        get => organization1JobDescription;
+        set
+        {
+            organization1JobDescription = value;
+            OnPropertyChanged("Organization1JobDescription");
+        }
+    }
+
+    public string Website1Type
+    {
+        get => website1Type;
+        set
+        {
+            website1Type = value;
+            OnPropertyChanged("Website1Type");
+        }
+    }
+
+    public string Website1Value
+    {
+        get => website1Value;
+        set
+        {
+            website1Value = value;
+            OnPropertyChanged("Website1Value");
+        }
+    }
+
+    public string CustomField1Type
+    {
+        get => customField1Type;
+        set
+        {
+            customField1Type = value;
+            OnPropertyChanged("CustomField1Type");
+        }
+    }
+
+    public string CustomField1Value
+    {
+        get => customField1Value;
+        set
+        {
+            customField1Value = value;
+            OnPropertyChanged("CustomField1Value");
+        }
+    }
+
+    public string CustomField2Type
+    {
+        get => customField2Type;
+        set
+        {
+            customField2Type = value;
+            OnPropertyChanged("CustomField2Type");
+        }
+    }
+
+    public string CustomField2Value
+    {
+        get => customField2Value;
+        set
+        {
+            customField2Value = value;
+            OnPropertyChanged("CustomField2Value");
+        }
+    }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    void OnPropertyChanged(string propName)
+    private void OnPropertyChanged(string propName)
     {
         PropertyChanged(this, new PropertyChangedEventArgs(propName));
     }
-
-    public string CustomField2Value { get { return customField2Value; } set { customField2Value = value; OnPropertyChanged("CustomField2Value"); } }
-
-
 }

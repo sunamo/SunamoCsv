@@ -1,7 +1,7 @@
 namespace SunamoCsv;
 
 /// <summary>
-/// Csv record class
+///     Csv record class
 /// </summary>
 [Serializable]
 public sealed class CsvRecord
@@ -9,20 +9,14 @@ public sealed class CsvRecord
     #region Properties
 
     /// <summary>
-    /// Gets the Fields in the record
+    ///     Gets the Fields in the record
     /// </summary>
-    public readonly List<string> Fields = new List<string>();
+    public readonly List<string> Fields = new();
 
     /// <summary>
-    /// Gets the number of fields in the record
+    ///     Gets the number of fields in the record
     /// </summary>
-    public int FieldCount
-    {
-        get
-        {
-            return Fields.Count;
-        }
-    }
+    public int FieldCount => Fields.Count;
 
     #endregion Properties
 }
