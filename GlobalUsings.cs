@@ -6,7 +6,7 @@ global using System.IO;
 global using System.Data;
 global using System.ComponentModel;
 global using System.Collections;
-global using SunamoCsv._sunamo.SunamoValues;
+global using SunamoCsv;
 global using SunamoCsv._sunamo.SunamoExceptions;
 global using System.Diagnostics;
 global using System.Diagnostics.CodeAnalysis;

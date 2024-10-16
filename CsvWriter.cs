@@ -23,7 +23,7 @@ public sealed class CsvWriter : IDisposable
     /// <summary>
     ///     Gets or sets what the carriage return and line feed replacement characters should be
     /// </summary>
-    public string CarriageReturnAndLineFeedReplacement { get; set; } = AllStrings.comma;
+    public string CarriageReturnAndLineFeedReplacement { get; set; } = ",";
 
     #endregion Properties
 
@@ -247,9 +247,9 @@ public sealed class CsvWriter : IDisposable
     {
         for (var i = 0; i < fields.Count; i++)
         {
-            var quotesRequired = fields[i].Contains(AllStrings.comma);
-            var escapeQuotes = fields[i].Contains(AllStrings.qm);
-            var fieldValue = escapeQuotes ? fields[i].Replace(AllStrings.qm, AllStrings.qm) : fields[i];
+            var quotesRequired = fields[i].Contains(",");
+            var escapeQuotes = fields[i].Contains("\"");
+            var fieldValue = escapeQuotes ? fields[i].Replace("\"", "\"") : fields[i];
 
             if (ReplaceCarriageReturnsAndLineFeedsFromFieldValues &&
                 (fieldValue.Contains("\r") || fieldValue.Contains("\n")))
@@ -261,8 +261,8 @@ public sealed class CsvWriter : IDisposable
             }
 
             writer.Write( /*string.Format*/
-                "{0}{1}{0}{2}", quotesRequired || escapeQuotes ? AllStrings.qm : string.Empty, fieldValue,
-                i < fields.Count - 1 ? AllStrings.comma : string.Empty);
+                "{0}{1}{0}{2}", quotesRequired || escapeQuotes ? "\"" : string.Empty, fieldValue,
+                i < fields.Count - 1 ? "," : string.Empty);
         }
 
         writer.WriteLine();

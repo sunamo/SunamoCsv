@@ -243,7 +243,7 @@ public sealed class SunamoCsvReader : IDisposable
         return dataTable;
     }
 
-    public static char delimiter = AllChars.comma;
+    public static char delimiter = ',';
 
     /// <summary>
     ///     Parses a csv line
@@ -264,7 +264,7 @@ public sealed class SunamoCsvReader : IDisposable
             // If we are not currently inside a column
             if (!inColumn)
             {
-                if (character == AllChars.qm)
+                if (character == '"')
                     inQuotes = true;
                 else
                     _columnBuilder.Append(character);
@@ -276,14 +276,14 @@ public sealed class SunamoCsvReader : IDisposable
             // If we are in between double quotes
             if (inQuotes)
             {
-                if (character == AllChars.qm &&
+                if (character == '"' &&
                     ((line.Length > i + 1 && line[i + 1] == delimiter) || i + 1 == line.Length))
                 {
                     inQuotes = false;
                     inColumn = false;
                     i++;
                 }
-                else if (character == AllChars.qm && line.Length > i + 1 && line[i + 1] == AllChars.qm)
+                else if (character == '"' && line.Length > i + 1 && line[i + 1] == '"')
                 {
                     i++;
                 }
