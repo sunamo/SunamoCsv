@@ -15,3 +15,7 @@ global using SunamoCsv;
 global using SunamoCsv.Data;
 global using SunamoCsv._sunamo;
 global using SunamoCsv._sunamo.SunamoParsing;
+
+global using ILogger = Microsoft.Extensions.Logging.ILogger;
+global using Microsoft.Extensions.Logging;
+global using NullLogger = Microsoft.Extensions.Logging.Abstractions.NullLogger;
