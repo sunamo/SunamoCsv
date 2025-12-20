@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Version>25.3.29.1</Version>
     <Description>Working with CSV (comma-separated values)</Description>
     <Authors>www.sunamo.cz</Authors>
@@ -18,7 +18,8 @@
     <Folder Include="CsvHelper\">
     </Folder>
     <None Include="readme.md" Pack="True" PackagePath="." />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3" Pack="True" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.3"
+      Pack="True" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

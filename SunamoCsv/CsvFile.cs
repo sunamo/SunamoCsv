@@ -1,16 +1,13 @@
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCsv;
-
 /// <summary>
 ///     Class to hold csv data
 ///     Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
 /// </summary>
-[Serializable]
-public sealed class CsvFile
+public sealed partial class CsvFile
 {
     private static Type type = typeof(CsvFile);
-
     public CsvFile()
     {
     }
@@ -20,18 +17,14 @@ public sealed class CsvFile
         SunamoCsvReader.delimiter = delimiter;
     }
 
-    #region Properties
-
     /// <summary>
     ///     Gets the file headers
     /// </summary>
     public readonly List<string> Headers = new();
-
     /// <summary>
     ///     Gets the records in the file
     /// </summary>
     public readonly CsvRecords Records = new();
-
     /// <summary>
     ///     Gets the header count
     /// </summary>
@@ -41,14 +34,15 @@ public sealed class CsvFile
     {
         var list = new List<string>();
         var objects = Objects(v);
-        foreach (var item in objects) list.Add(item[0]);
+        foreach (var item in objects)
+            list.Add(item[0]);
         return list;
     }
 
     /// <summary>
     ///     Return null when cannot be parsed
     /// </summary>
-    /// <param name="v"></param>
+    /// <param name = "v"></param>
     public List<DateTime?> DateTimes(int v)
     {
         DateTime dt;
@@ -71,12 +65,12 @@ public sealed class CsvFile
         var result = new List<List<string>>();
         var i = 0;
         List<string> o = null;
-
         foreach (var item in Records)
         {
             o = new List<string>(columns.Length);
             ////CA.InitFillWith(o, columns.Length);
-            for (i = 0; i < columns.Length; i++) o.Add(item.Fields[columns[i]]);
+            for (i = 0; i < columns.Length; i++)
+                o.Add(item.Fields[columns[i]]);
             result.Add(o);
         }
 
@@ -88,14 +82,10 @@ public sealed class CsvFile
     /// </summary>
     public int RecordCount => Records.Count;
 
-    #endregion Properties
-
-    #region Indexers
-
     /// <summary>
     ///     Gets a record at the specified index
     /// </summary>
-    /// <param name="recordIndex">Record index</param>
+    /// <param name = "recordIndex">Record index</param>
     /// <returns>CsvRecord</returns>
     public CsvRecord this[int recordIndex]
     {
@@ -103,41 +93,34 @@ public sealed class CsvFile
         {
             if (recordIndex > Records.Count - 1)
                 throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
-
             return Records[recordIndex];
         }
     }
 
-
     /// <summary>
     ///     Gets the field value at the specified record and field index
     /// </summary>
-    /// <param name="recordIndex">Record index</param>
-    /// <param name="fieldIndex">Field index</param>
+    /// <param name = "recordIndex">Record index</param>
+    /// <param name = "fieldIndex">Field index</param>
     public string this[int recordIndex, int fieldIndex]
     {
         get
         {
             if (recordIndex > Records.Count - 1)
                 throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
-
             var record = Records[recordIndex];
             if (fieldIndex > record.Fields.Count - 1)
-                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex,
-                    recordIndex));
-
+                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
             return record.Fields[fieldIndex];
         }
+
         set
         {
             if (recordIndex > Records.Count - 1)
                 throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
-
             var record = Records[recordIndex];
-
             if (fieldIndex > record.Fields.Count - 1)
                 throw new Exception(string.Format("There is no field at index {0}.", fieldIndex));
-
             record.Fields[fieldIndex] = value;
         }
     }
@@ -145,75 +128,58 @@ public sealed class CsvFile
     /// <summary>
     ///     Gets the field value at the specified record index for the supplied field name
     /// </summary>
-    /// <param name="recordIndex">Record index</param>
-    /// <param name="fieldName">Field name</param>
+    /// <param name = "recordIndex">Record index</param>
+    /// <param name = "fieldName">Field name</param>
     public string this[int recordIndex, string fieldName]
     {
         get
         {
             if (recordIndex > Records.Count - 1)
                 throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
-
             var record = Records[recordIndex];
-
             var fieldIndex = -1;
-
             for (var i = 0; i < Headers.Count; i++)
             {
                 if (string.Compare(Headers[i], fieldName) != 0)
                     continue;
-
                 fieldIndex = i;
                 break;
             }
 
             if (fieldIndex == -1)
                 throw new Exception(string.Format("There is no field header with the name '{0}'", fieldName));
-
             if (fieldIndex > record.Fields.Count - 1)
-                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex,
-                    recordIndex));
-
+                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
             return record.Fields[fieldIndex];
         }
+
         set
         {
             if (recordIndex > Records.Count - 1)
                 throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
-
             var record = Records[recordIndex];
-
             var fieldIndex = -1;
-
             for (var i = 0; i < Headers.Count; i++)
             {
                 if (string.Compare(Headers[i], fieldName) != 0)
                     continue;
-
                 fieldIndex = i;
                 break;
             }
 
             if (fieldIndex == -1)
                 throw new Exception(string.Format("There is no field header with the name '{0}'", fieldName));
-
             if (fieldIndex > record.Fields.Count - 1)
-                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex,
-                    recordIndex));
-
+                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
             record.Fields[fieldIndex] = value;
         }
     }
 
-    #endregion Indexers
-
-    #region Methods
-
     /// <summary>
     ///     Populates the current instance from the specified file
     /// </summary>
-    /// <param name="filePath">File path</param>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
+    /// <param name = "filePath">File path</param>
+    /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
     public void Populate(string filePath, bool hasHeaderRow)
     {
         Populate(filePath, null, hasHeaderRow, false);
@@ -222,9 +188,9 @@ public sealed class CsvFile
     /// <summary>
     ///     Populates the current instance from the specified file
     /// </summary>
-    /// <param name="filePath">File path</param>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+    /// <param name = "filePath">File path</param>
+    /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
+    /// <param name = "_trimColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(string filePath, bool hasHeaderRow, bool _trimColumns)
     {
         Populate(filePath, null, hasHeaderRow, _trimColumns);
@@ -233,14 +199,19 @@ public sealed class CsvFile
     /// <summary>
     ///     Populates the current instance from the specified file
     /// </summary>
-    /// <param name="filePath">File path</param>
-    /// <param name="encoding">Encoding</param>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+    /// <param name = "filePath">File path</param>
+    /// <param name = "encoding">Encoding</param>
+    /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
+    /// <param name = "_trimColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool _trimColumns)
     {
         using (var reader = new SunamoCsvReader(filePath, encoding)
-                   { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
+        {
+            HasHeaderRow = hasHeaderRow,
+            TrimColumns = _trimColumns
+        }
+
+        )
         {
             PopulateCsvFile(reader);
         }
@@ -249,8 +220,8 @@ public sealed class CsvFile
     /// <summary>
     ///     Populates the current instance from a stream
     /// </summary>
-    /// <param name="stream">Stream</param>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
+    /// <param name = "stream">Stream</param>
+    /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
     public void Populate(Stream stream, bool hasHeaderRow)
     {
         Populate(stream, null, hasHeaderRow, false);
@@ -259,92 +230,11 @@ public sealed class CsvFile
     /// <summary>
     ///     Populates the current instance from a stream
     /// </summary>
-    /// <param name="stream">Stream</param>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+    /// <param name = "stream">Stream</param>
+    /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
+    /// <param name = "_trimColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(Stream stream, bool hasHeaderRow, bool _trimColumns)
     {
         Populate(stream, null, hasHeaderRow, _trimColumns);
     }
-
-    /// <summary>
-    ///     Populates the current instance from a stream
-    /// </summary>
-    /// <param name="stream">Stream</param>
-    /// <param name="encoding">Encoding</param>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(Stream stream, Encoding encoding, bool hasHeaderRow, bool _trimColumns)
-    {
-        using (var reader = new SunamoCsvReader(stream, encoding)
-                   { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
-        {
-            PopulateCsvFile(reader);
-        }
-    }
-
-    /// <summary>
-    ///     Populates the current instance from a string
-    /// </summary>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name="csvContent">Csv text</param>
-    public void Populate(bool hasHeaderRow, string csvContent)
-    {
-        Populate(hasHeaderRow, csvContent, null, false);
-    }
-
-    /// <summary>
-    ///     Populates the current instance from a string
-    /// </summary>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name="csvContent">Csv text</param>
-    /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(bool hasHeaderRow, string csvContent, bool _trimColumns)
-    {
-        Populate(hasHeaderRow, csvContent, null, _trimColumns);
-    }
-
-    /// <summary>
-    ///     Populates the current instance from a string
-    /// </summary>
-    /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name="csvContent">Csv text</param>
-    /// <param name="encoding">Encoding</param>
-    /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(bool hasHeaderRow, string csvContent, Encoding encoding, bool _trimColumns)
-    {
-        using (var reader = new SunamoCsvReader(encoding, csvContent)
-                   { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
-        {
-            PopulateCsvFile(reader);
-        }
-    }
-
-    /// <summary>
-    ///     Populates the current instance using the CsvReader object
-    /// </summary>
-    /// <param name="reader">CsvReader</param>
-    private void PopulateCsvFile(SunamoCsvReader reader)
-    {
-        Headers.Clear();
-        Records.Clear();
-
-        var addedHeader = false;
-
-        while (reader.ReadNextRecord())
-        {
-            if (reader.HasHeaderRow && !addedHeader)
-            {
-                reader.Fields.ForEach(field => Headers.Add(field));
-                addedHeader = true;
-                continue;
-            }
-
-            var record = new CsvRecord();
-            reader.Fields.ForEach(field => record.Fields.Add(field));
-            Records.Add(record);
-        }
-    }
-
-    #endregion Methods
 }
