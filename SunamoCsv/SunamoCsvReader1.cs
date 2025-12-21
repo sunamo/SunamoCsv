@@ -1,6 +1,7 @@
+namespace SunamoCsv;
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCsv;
 /// <summary>
 ///     Používat CsvFile místo toho
 ///     Class to read csv content from various sources

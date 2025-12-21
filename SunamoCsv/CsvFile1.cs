@@ -1,6 +1,7 @@
+namespace SunamoCsv;
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCsv;
 /// <summary>
 ///     Class to hold csv data
 ///     Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer

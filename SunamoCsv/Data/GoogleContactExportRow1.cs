@@ -1,6 +1,7 @@
+namespace SunamoCsv.Data;
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCsv.Data;
 public partial class GoogleContactExportRow : INotifyPropertyChanged
 {
     public string Initials
