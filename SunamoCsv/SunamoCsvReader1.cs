@@ -37,7 +37,7 @@ public sealed partial class SunamoCsvReader : IDisposable
             // If we are in between double quotes
             if (inQuotes)
             {
-                if (character == '"' && ((line.Length > i + 1 && line[i + 1] == delimiter) || i + 1 == line.Length))
+                if (character == '"' && ((line.Length > i + 1 && line[i + 1] == Delimiter) || i + 1 == line.Length))
                 {
                     inQuotes = false;
                     inColumn = false;
@@ -48,7 +48,7 @@ public sealed partial class SunamoCsvReader : IDisposable
                     i++;
                 }
             }
-            else if (character == delimiter)
+            else if (character == Delimiter)
             {
                 inColumn = false;
             }

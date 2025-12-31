@@ -8,14 +8,13 @@ namespace SunamoCsv;
 /// </summary>
 public sealed partial class CsvFile
 {
-    private static Type type = typeof(CsvFile);
     public CsvFile()
     {
     }
 
     public CsvFile(char delimiter)
     {
-        SunamoCsvReader.delimiter = delimiter;
+        SunamoCsvReader.Delimiter = delimiter;
     }
 
     /// <summary>
@@ -31,10 +30,10 @@ public sealed partial class CsvFile
     /// </summary>
     public int HeaderCount => Headers.Count;
 
-    public List<string> Strings(int v)
+    public List<string> Strings(int columnIndex)
     {
         var list = new List<string>();
-        var objects = Objects(v);
+        var objects = Objects(columnIndex);
         foreach (var item in objects)
             list.Add(item[0]);
         return list;
@@ -43,17 +42,17 @@ public sealed partial class CsvFile
     /// <summary>
     ///     Return null when cannot be parsed
     /// </summary>
-    /// <param name = "v"></param>
-    public List<DateTime?> DateTimes(int v)
+    /// <param name = "columnIndex"></param>
+    public List<DateTime?> DateTimes(int columnIndex)
     {
-        DateTime dt;
+        DateTime dateTime;
         var list = new List<DateTime?>();
-        var objects = Objects(v);
+        var objects = Objects(columnIndex);
         foreach (var item in objects)
         {
-            dt = DateTime.Parse(item[0]); //DTHelperCs.ParseTimeCzech(item[0]);
-            if (dt != DateTime.MinValue)
-                list.Add(new DateTime(1, 1, 1, dt.Hour, dt.Minute, dt.Second));
+            dateTime = DateTime.Parse(item[0]); //DTHelperCs.ParseTimeCzech(item[0]);
+            if (dateTime != DateTime.MinValue)
+                list.Add(new DateTime(1, 1, 1, dateTime.Hour, dateTime.Minute, dateTime.Second));
             else
                 list.Add(null);
         }
@@ -65,14 +64,14 @@ public sealed partial class CsvFile
     {
         var result = new List<List<string>>();
         var i = 0;
-        List<string> o = null;
+        List<string> row = null;
         foreach (var item in Records)
         {
-            o = new List<string>(columns.Length);
-            ////CA.InitFillWith(o, columns.Length);
+            row = new List<string>(columns.Length);
+            ////CA.InitFillWith(row, columns.Length);
             for (i = 0; i < columns.Length; i++)
-                o.Add(item.Fields[columns[i]]);
-            result.Add(o);
+                row.Add(item.Fields[columns[i]]);
+            result.Add(row);
         }
 
         return result;
@@ -191,10 +190,10 @@ public sealed partial class CsvFile
     /// </summary>
     /// <param name = "filePath">File path</param>
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name = "_trimColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(string filePath, bool hasHeaderRow, bool _trimColumns)
+    /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
+    public void Populate(string filePath, bool hasHeaderRow, bool isTrimmingColumns)
     {
-        Populate(filePath, null, hasHeaderRow, _trimColumns);
+        Populate(filePath, null, hasHeaderRow, isTrimmingColumns);
     }
 
     /// <summary>
@@ -203,13 +202,13 @@ public sealed partial class CsvFile
     /// <param name = "filePath">File path</param>
     /// <param name = "encoding">Encoding</param>
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name = "_trimColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool _trimColumns)
+    /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
+    public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool isTrimmingColumns)
     {
         using (var reader = new SunamoCsvReader(filePath, encoding)
         {
             HasHeaderRow = hasHeaderRow,
-            TrimColumns = _trimColumns
+            TrimColumns = isTrimmingColumns
         }
 
         )
@@ -233,9 +232,9 @@ public sealed partial class CsvFile
     /// </summary>
     /// <param name = "stream">Stream</param>
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
-    /// <param name = "_trimColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(Stream stream, bool hasHeaderRow, bool _trimColumns)
+    /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
+    public void Populate(Stream stream, bool hasHeaderRow, bool isTrimmingColumns)
     {
-        Populate(stream, null, hasHeaderRow, _trimColumns);
+        Populate(stream, null, hasHeaderRow, isTrimmingColumns);
     }
 }

@@ -9,19 +9,18 @@ namespace SunamoCsv;
 /// </summary>
 public sealed partial class SunamoCsvReader : IDisposable
 {
-    private static Type type = typeof(SunamoCsvReader);
     /// <summary>
     ///     Use CsvFile.DateTimes instead
     /// </summary>
-    /// <param name = "v"></param>
-    public static List<DateTime?> DateTime(CsvFile file, int v)
+    /// <param name = "columnIndex"></param>
+    public static List<DateTime?> DateTime(CsvFile file, int columnIndex)
     {
-        return file.DateTimes(v);
+        return file.DateTimes(columnIndex);
     }
 
-    public static List<string> Strings(CsvFile file, int v)
+    public static List<string> Strings(CsvFile file, int columnIndex)
     {
-        return file.Strings(v);
+        return file.Strings(columnIndex);
     }
 
     /// <summary>
@@ -211,5 +210,5 @@ public sealed partial class SunamoCsvReader : IDisposable
         return dataTable;
     }
 
-    public static char delimiter = ',';
+    public static char Delimiter { get; set; } = ',';
 }

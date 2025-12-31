@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 using SunamoCsv.Data;
 using SunamoFileIO;
 using SunamoShared.Helpers.Number;
@@ -16,35 +19,32 @@ async Task
 #endif
 ParseGoogleFormatGoogleContactsTest()
     {
-        var f = @"D:\_Test\sunamo\SunamoCsv\contacts.csv";
+        var filePath = @"D:\_Test\sunamo\SunamoCsv\contacts.csv";
 
-        GoogleContactExportRow c = new GoogleContactExportRow();
-        var g = c.GetType().GetProperties().Select(d => d.Name);
+        GoogleContactExportRow row = new GoogleContactExportRow();
+        var propertyNames = row.GetType().GetProperties().Select(property => property.Name);
 
-        var c2 =
+        var fileContent =
 #if ASYNC
 await
 #endif
-TF.ReadAllText(f);
+TF.ReadAllText(filePath);
 
         CsvFile csv = new CsvFile();
         //CsvReader csvReader = new CsvReader();
-        csv.Populate(true, c2);
+        csv.Populate(true, fileContent);
 
-        var gCount = g.Count();
+        var propertyCount = propertyNames.Count();
 
-        List<List<string>> ls = new List<List<string>>(gCount);
-        int i = 0;
-        foreach (var item in g)
+        List<List<string>> columnData = new List<List<string>>(propertyCount);
+        foreach (var item in propertyNames)
         {
-            var ls2 = LinearHelper.GetStringListFromTo(0, gCount - 1);
-            //var li = ls2.ConvertAll(d => int.Parse( CAG.ToList<int>(ls2);
+            var stringList = LinearHelper.GetStringListFromTo(0, propertyCount - 1);
+            //var intList = stringList.ConvertAll(text => int.Parse( CAG.ToList<int>(stringList);
 
             var entries = csv.Strings(0);
-            ls.Add(entries);
+            columnData.Add(entries);
         }
-
-        int d2 = 0;
     }
 
     //[Fact]
@@ -56,34 +56,31 @@ async Task
 #endif
 ParseOutlookFormatGoogleContactsTest()
     {
-        var f = @"D:\_Test\sunamo\SunamoCsv\contacts_Outlook.csv";
+        var filePath = @"D:\_Test\sunamo\SunamoCsv\contacts_Outlook.csv";
 
-        GoogleContactExportRow c = new GoogleContactExportRow();
-        var g = c.GetType().GetProperties().Select(d2 => d2.Name);
+        GoogleContactExportRow row = new GoogleContactExportRow();
+        var propertyNames = row.GetType().GetProperties().Select(property => property.Name);
 
-        var c2 =
+        var fileContent =
 #if ASYNC
 await
 #endif
-TF.ReadAllText(f);
+TF.ReadAllText(filePath);
 
         CsvFile csv = new CsvFile();
         //CsvReader csvReader = new CsvReader();
-        csv.Populate(true, c2);
+        csv.Populate(true, fileContent);
 
-        var gCount = g.Count();
+        var propertyCount = propertyNames.Count();
 
-        List<List<string>> ls = new List<List<string>>(gCount);
-        int i = 0;
-        foreach (var item in g)
+        List<List<string>> columnData = new List<List<string>>(propertyCount);
+        foreach (var item in propertyNames)
         {
-            var ls2 = LinearHelper.GetStringListFromTo(0, gCount - 1);
-            var li = ls2.ConvertAll(d => int.Parse(d)); //CAG.ToList<int>();
+            var stringList = LinearHelper.GetStringListFromTo(0, propertyCount - 1);
+            var intList = stringList.ConvertAll(text => int.Parse(text)); //CAG.ToList<int>();
 
             var entries = csv.Strings(0);
-            ls.Add(entries);
+            columnData.Add(entries);
         }
-
-        int d = 0;
     }
 }

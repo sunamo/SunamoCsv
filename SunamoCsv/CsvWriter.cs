@@ -233,7 +233,7 @@ public sealed class CsvWriter : IDisposable
         foreach (DataRow row in dataTable.Rows)
         {
             fields.Clear();
-            fields.AddRange(row.ItemArray.Select(o => o.ToString()));
+            fields.AddRange(row.ItemArray.Select(value => value.ToString()));
             WriteRecord(fields, writer);
         }
     }
