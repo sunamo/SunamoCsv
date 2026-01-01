@@ -1,6 +1,3 @@
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-
 using SunamoCsv.Data;
 using SunamoFileIO;
 using SunamoShared.Helpers.Number;
@@ -8,8 +5,14 @@ using System.Threading.Tasks;
 
 namespace SunamoCsv.Tests;
 
+/// <summary>
+///     Tests for Google Contacts export manipulation without mocking
+/// </summary>
 public class GoogleContactsExportManipulationWithoutMockTests
 {
+    /// <summary>
+    ///     Tests parsing Google format contacts CSV file
+    /// </summary>
     //[Fact]
     public
 #if ASYNC
@@ -47,6 +50,9 @@ TF.ReadAllText(filePath);
         }
     }
 
+    /// <summary>
+    ///     Tests parsing Outlook format contacts CSV file
+    /// </summary>
     //[Fact]
     public
 #if ASYNC

@@ -1,9 +1,8 @@
 namespace SunamoCsv.Data;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class GoogleContactExportRow : INotifyPropertyChanged
 {
+    /// <summary>Gets or sets the initials</summary>
     public string Initials
     {
         get => initials;
@@ -14,6 +13,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the nickname</summary>
     public string Nickname
     {
         get => nickname;
@@ -24,6 +24,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the short name</summary>
     public string ShortName
     {
         get => shortName;
@@ -34,6 +35,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the maiden name</summary>
     public string MaidenName
     {
         get => maidenName;
@@ -44,6 +46,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the birthday</summary>
     public string Birthday
     {
         get => birthday;
@@ -54,6 +57,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the gender</summary>
     public string Gender
     {
         get => gender;
@@ -64,6 +68,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the location</summary>
     public string Location
     {
         get => location;
@@ -74,6 +79,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the billing information</summary>
     public string BillingInformation
     {
         get => billingInformation;
@@ -84,6 +90,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the directory server</summary>
     public string DirectoryServer
     {
         get => directoryServer;
@@ -94,6 +101,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the mileage</summary>
     public string Mileage
     {
         get => mileage;
@@ -104,6 +112,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the occupation</summary>
     public string Occupation
     {
         get => occupation;
@@ -114,6 +123,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the hobby</summary>
     public string Hobby
     {
         get => hobby;
@@ -124,6 +134,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the sensitivity level</summary>
     public string Sensitivity
     {
         get => sensitivity;
@@ -134,6 +145,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the priority</summary>
     public string Priority
     {
         get => priority;
@@ -144,6 +156,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the subject</summary>
     public string Subject
     {
         get => subject;
@@ -154,6 +167,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the notes</summary>
     public string Notes
     {
         get => notes;
@@ -164,6 +178,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the language</summary>
     public string Language
     {
         get => language;
@@ -174,6 +189,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the photo</summary>
     public string Photo
     {
         get => photo;
@@ -184,6 +200,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the group membership</summary>
     public string GroupMembership
     {
         get => groupMembership;
@@ -194,6 +211,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the email type</summary>
     public string EMail1Type
     {
         get => eMail1Type;
@@ -204,6 +222,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the email value</summary>
     public string EMail1Value
     {
         get => eMail1Value;
@@ -214,6 +233,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the phone type</summary>
     public string Phone1Type
     {
         get => phone1Type;
@@ -224,6 +244,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the phone number</summary>
     public string Phone1Value
     {
         get => phone1Value;
@@ -234,6 +255,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the address type</summary>
     public string Address1Type
     {
         get => address1Type;
@@ -244,6 +266,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the formatted address</summary>
     public string Address1Formatted
     {
         get => address1Formatted;

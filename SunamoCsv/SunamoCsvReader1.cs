@@ -1,7 +1,5 @@
 namespace SunamoCsv;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
 ///     Používat CsvFile místo toho
 ///     Class to read csv content from various sources
@@ -16,31 +14,31 @@ public sealed partial class SunamoCsvReader : IDisposable
     private void ParseLine(string line)
     {
         Fields = new List<string>();
-        var inColumn = false;
-        var inQuotes = false;
+        var isInColumn = false;
+        var isInQuotes = false;
         _columnBuilder.Remove(0, _columnBuilder.Length);
         // Iterate through every character in the line
         for (var i = 0; i < line.Length; i++)
         {
             var character = line[i];
             // If we are not currently inside a column
-            if (!inColumn)
+            if (!isInColumn)
             {
                 if (character == '"')
-                    inQuotes = true;
+                    isInQuotes = true;
                 else
                     _columnBuilder.Append(character);
-                inColumn = true;
+                isInColumn = true;
                 continue;
             }
 
             // If we are in between double quotes
-            if (inQuotes)
+            if (isInQuotes)
             {
                 if (character == '"' && ((line.Length > i + 1 && line[i + 1] == Delimiter) || i + 1 == line.Length))
                 {
-                    inQuotes = false;
-                    inColumn = false;
+                    isInQuotes = false;
+                    isInColumn = false;
                     i++;
                 }
                 else if (character == '"' && line.Length > i + 1 && line[i + 1] == '"')
@@ -50,11 +48,11 @@ public sealed partial class SunamoCsvReader : IDisposable
             }
             else if (character == Delimiter)
             {
-                inColumn = false;
+                isInColumn = false;
             }
 
             // If we are no longer in the column clear the builder and add the columns to the list
-            if (!inColumn)
+            if (!isInColumn)
             {
                 Fields.Add(TrimColumns ? _columnBuilder.ToString().Trim() : _columnBuilder.ToString());
                 _columnBuilder.Remove(0, _columnBuilder.Length);
@@ -66,7 +64,7 @@ public sealed partial class SunamoCsvReader : IDisposable
         }
 
         // If we are still inside a column add a new one
-        if (inColumn)
+        if (isInColumn)
             Fields.Add(TrimColumns ? _columnBuilder.ToString().Trim() : _columnBuilder.ToString());
     }
 

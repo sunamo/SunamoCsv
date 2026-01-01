@@ -1,7 +1,5 @@
 namespace SunamoCsv;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
 ///     Class to hold csv data
 ///     Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
@@ -12,10 +10,10 @@ public sealed partial class CsvFile
     ///     Populates the current instance from a stream
     /// </summary>
     /// <param name = "stream">Stream</param>
-    /// <param name = "encoding">Encoding</param>
+    /// <param name = "encoding">Encoding (null for UTF8)</param>
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
     /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(Stream stream, Encoding encoding, bool hasHeaderRow, bool isTrimmingColumns)
+    public void Populate(Stream stream, Encoding? encoding, bool hasHeaderRow, bool isTrimmingColumns)
     {
         using (var reader = new SunamoCsvReader(stream, encoding)
         {
@@ -36,7 +34,7 @@ public sealed partial class CsvFile
     /// <param name = "csvContent">Csv text</param>
     public void Populate(bool hasHeaderRow, string csvContent)
     {
-        Populate(hasHeaderRow, csvContent, null, false);
+        Populate(hasHeaderRow, csvContent, (Encoding?)null, false);
     }
 
     /// <summary>
@@ -47,7 +45,7 @@ public sealed partial class CsvFile
     /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(bool hasHeaderRow, string csvContent, bool isTrimmingColumns)
     {
-        Populate(hasHeaderRow, csvContent, null, isTrimmingColumns);
+        Populate(hasHeaderRow, csvContent, (Encoding?)null, isTrimmingColumns);
     }
 
     /// <summary>
@@ -55,9 +53,9 @@ public sealed partial class CsvFile
     /// </summary>
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
     /// <param name = "csvContent">Csv text</param>
-    /// <param name = "encoding">Encoding</param>
+    /// <param name = "encoding">Encoding (null for UTF8)</param>
     /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(bool hasHeaderRow, string csvContent, Encoding encoding, bool isTrimmingColumns)
+    public void Populate(bool hasHeaderRow, string csvContent, Encoding? encoding, bool isTrimmingColumns)
     {
         using (var reader = new SunamoCsvReader(encoding, csvContent)
         {
@@ -79,19 +77,22 @@ public sealed partial class CsvFile
     {
         Headers.Clear();
         Records.Clear();
-        var addedHeader = false;
+        var isHeaderAdded = false;
         while (reader.ReadNextRecord())
         {
-            if (reader.HasHeaderRow && !addedHeader)
+            if (reader.HasHeaderRow && !isHeaderAdded && reader.Fields != null)
             {
                 reader.Fields.ForEach(field => Headers.Add(field));
-                addedHeader = true;
+                isHeaderAdded = true;
                 continue;
             }
 
-            var record = new CsvRecord();
-            reader.Fields.ForEach(field => record.Fields.Add(field));
-            Records.Add(record);
+            if (reader.Fields != null)
+            {
+                var record = new CsvRecord();
+                reader.Fields.ForEach(field => record.Fields.Add(field));
+                Records.Add(record);
+            }
         }
     }
 }

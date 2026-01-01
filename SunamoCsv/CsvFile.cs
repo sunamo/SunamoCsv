@@ -1,17 +1,22 @@
 namespace SunamoCsv;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
 ///     Class to hold csv data
 ///     Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
 /// </summary>
 public sealed partial class CsvFile
 {
+    /// <summary>
+    ///     Initializes a new instance of the CsvFile class
+    /// </summary>
     public CsvFile()
     {
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the CsvFile class with specified delimiter
+    /// </summary>
+    /// <param name="delimiter">Character to use as field delimiter</param>
     public CsvFile(char delimiter)
     {
         SunamoCsvReader.Delimiter = delimiter;
@@ -30,6 +35,11 @@ public sealed partial class CsvFile
     /// </summary>
     public int HeaderCount => Headers.Count;
 
+    /// <summary>
+    ///     Returns string values from specified column
+    /// </summary>
+    /// <param name="columnIndex">Zero-based column index</param>
+    /// <returns>List of string values from the column</returns>
     public List<string> Strings(int columnIndex)
     {
         var list = new List<string>();
@@ -60,11 +70,16 @@ public sealed partial class CsvFile
         return list;
     }
 
+    /// <summary>
+    ///     Returns values from specified columns as list of lists
+    /// </summary>
+    /// <param name="columns">Array of zero-based column indices</param>
+    /// <returns>List of lists containing values from specified columns</returns>
     public List<List<string>> Objects(params int[] columns)
     {
         var result = new List<List<string>>();
         var i = 0;
-        List<string> row = null;
+        List<string>? row = null;
         foreach (var item in Records)
         {
             row = new List<string>(columns.Length);
@@ -182,7 +197,7 @@ public sealed partial class CsvFile
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
     public void Populate(string filePath, bool hasHeaderRow)
     {
-        Populate(filePath, null, hasHeaderRow, false);
+        Populate(filePath, (Encoding?)null, hasHeaderRow, false);
     }
 
     /// <summary>
@@ -193,17 +208,17 @@ public sealed partial class CsvFile
     /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(string filePath, bool hasHeaderRow, bool isTrimmingColumns)
     {
-        Populate(filePath, null, hasHeaderRow, isTrimmingColumns);
+        Populate(filePath, (Encoding?)null, hasHeaderRow, isTrimmingColumns);
     }
 
     /// <summary>
     ///     Populates the current instance from the specified file
     /// </summary>
     /// <param name = "filePath">File path</param>
-    /// <param name = "encoding">Encoding</param>
+    /// <param name = "encoding">Encoding (null for UTF8)</param>
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
     /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
-    public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool isTrimmingColumns)
+    public void Populate(string filePath, Encoding? encoding, bool hasHeaderRow, bool isTrimmingColumns)
     {
         using (var reader = new SunamoCsvReader(filePath, encoding)
         {
@@ -224,7 +239,7 @@ public sealed partial class CsvFile
     /// <param name = "hasHeaderRow">True if the file has a header row, otherwise false</param>
     public void Populate(Stream stream, bool hasHeaderRow)
     {
-        Populate(stream, null, hasHeaderRow, false);
+        Populate(stream, (Encoding?)null, hasHeaderRow, false);
     }
 
     /// <summary>
@@ -235,6 +250,6 @@ public sealed partial class CsvFile
     /// <param name = "isTrimmingColumns">True if column values should be trimmed, otherwise false</param>
     public void Populate(Stream stream, bool hasHeaderRow, bool isTrimmingColumns)
     {
-        Populate(stream, null, hasHeaderRow, isTrimmingColumns);
+        Populate(stream, (Encoding?)null, hasHeaderRow, isTrimmingColumns);
     }
 }

@@ -1,5 +1,8 @@
 namespace SunamoCsv;
 
+/// <summary>
+///     Represents a single record (row) in a CSV file
+/// </summary>
 public sealed class CsvRecord
 {
     #region Properties

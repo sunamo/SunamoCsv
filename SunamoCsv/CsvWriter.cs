@@ -8,7 +8,7 @@ public sealed class CsvWriter : IDisposable
 {
     #region Members
 
-    private StreamWriter _streamWriter;
+    private StreamWriter? _streamWriter;
 
     #endregion Members
 
@@ -38,7 +38,7 @@ public sealed class CsvWriter : IDisposable
     /// <param name="filePath">File path</param>
     public void WriteCsv(CsvFile csvFile, string filePath)
     {
-        WriteCsv(csvFile, filePath, null);
+        WriteCsv(csvFile, filePath, (Encoding?)null);
     }
 
     /// <summary>
@@ -46,8 +46,8 @@ public sealed class CsvWriter : IDisposable
     /// </summary>
     /// <param name="csvFile">CsvFile</param>
     /// <param name="filePath">File path</param>
-    /// <param name="encoding">Encoding</param>
-    public void WriteCsv(CsvFile csvFile, string filePath, Encoding encoding)
+    /// <param name="encoding">Encoding (null for UTF8)</param>
+    public void WriteCsv(CsvFile csvFile, string filePath, Encoding? encoding)
     {
         if (File.Exists(filePath))
             File.Delete(filePath);
@@ -67,7 +67,7 @@ public sealed class CsvWriter : IDisposable
     /// <param name="stream">Stream</param>
     public void WriteCsv(CsvFile csvFile, Stream stream)
     {
-        WriteCsv(csvFile, stream, null);
+        WriteCsv(csvFile, stream, (Encoding?)null);
     }
 
     /// <summary>
@@ -75,8 +75,8 @@ public sealed class CsvWriter : IDisposable
     /// </summary>
     /// <param name="csvFile">CsvFile</param>
     /// <param name="stream">Stream</param>
-    /// <param name="encoding">Encoding</param>
-    public void WriteCsv(CsvFile csvFile, Stream stream, Encoding encoding)
+    /// <param name="encoding">Encoding (null for UTF8)</param>
+    public void WriteCsv(CsvFile csvFile, Stream stream, Encoding? encoding)
     {
         stream.Position = 0;
         _streamWriter = new StreamWriter(stream, encoding ?? Encoding.UTF8);
@@ -89,9 +89,9 @@ public sealed class CsvWriter : IDisposable
     ///     Writes csv content to a string
     /// </summary>
     /// <param name="csvFile">CsvFile</param>
-    /// <param name="encoding">Encoding</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
     /// <returns>Csv content in a string</returns>
-    public string WriteCsv(CsvFile csvFile, Encoding encoding)
+    public string WriteCsv(CsvFile csvFile, Encoding? encoding)
     {
         var content = string.Empty;
 
@@ -127,7 +127,7 @@ public sealed class CsvWriter : IDisposable
     /// <param name="filePath">File path</param>
     public void WriteCsv(DataTable dataTable, string filePath)
     {
-        WriteCsv(dataTable, filePath, null);
+        WriteCsv(dataTable, filePath, (Encoding?)null);
     }
 
     /// <summary>
@@ -135,8 +135,8 @@ public sealed class CsvWriter : IDisposable
     /// </summary>
     /// <param name="dataTable">DataTable</param>
     /// <param name="filePath">File path</param>
-    /// <param name="encoding">Encoding</param>
-    public void WriteCsv(DataTable dataTable, string filePath, Encoding encoding)
+    /// <param name="encoding">Encoding (null for UTF8)</param>
+    public void WriteCsv(DataTable dataTable, string filePath, Encoding? encoding)
     {
         if (File.Exists(filePath))
             File.Delete(filePath);
@@ -156,7 +156,7 @@ public sealed class CsvWriter : IDisposable
     /// <param name="stream">Stream</param>
     public void WriteCsv(DataTable dataTable, Stream stream)
     {
-        WriteCsv(dataTable, stream, null);
+        WriteCsv(dataTable, stream, (Encoding?)null);
     }
 
     /// <summary>
@@ -164,8 +164,8 @@ public sealed class CsvWriter : IDisposable
     /// </summary>
     /// <param name="dataTable">DataTable</param>
     /// <param name="stream">Stream</param>
-    /// <param name="encoding">Encoding</param>
-    public void WriteCsv(DataTable dataTable, Stream stream, Encoding encoding)
+    /// <param name="encoding">Encoding (null for UTF8)</param>
+    public void WriteCsv(DataTable dataTable, Stream stream, Encoding? encoding)
     {
         stream.Position = 0;
         _streamWriter = new StreamWriter(stream, encoding ?? Encoding.UTF8);
@@ -178,9 +178,9 @@ public sealed class CsvWriter : IDisposable
     ///     Writes the DataTable to a string
     /// </summary>
     /// <param name="dataTable">DataTable</param>
-    /// <param name="encoding">Encoding</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
     /// <returns>Csv content in a string</returns>
-    public string WriteCsv(DataTable dataTable, Encoding encoding)
+    public string WriteCsv(DataTable dataTable, Encoding? encoding)
     {
         var content = string.Empty;
 
@@ -233,7 +233,7 @@ public sealed class CsvWriter : IDisposable
         foreach (DataRow row in dataTable.Rows)
         {
             fields.Clear();
-            fields.AddRange(row.ItemArray.Select(value => value.ToString()));
+            fields.AddRange(row.ItemArray.Select(value => value?.ToString() ?? string.Empty));
             WriteRecord(fields, writer);
         }
     }
@@ -247,21 +247,21 @@ public sealed class CsvWriter : IDisposable
     {
         for (var i = 0; i < fields.Count; i++)
         {
-            var quotesRequired = fields[i].Contains(",");
-            var escapeQuotes = fields[i].Contains("\"");
-            var fieldValue = escapeQuotes ? fields[i].Replace("\"", "\"") : fields[i];
+            var areQuotesRequired = fields[i].Contains(",");
+            var shouldEscapeQuotes = fields[i].Contains("\"");
+            var fieldValue = shouldEscapeQuotes ? fields[i].Replace("\"", "\"") : fields[i];
 
             if (ReplaceCarriageReturnsAndLineFeedsFromFieldValues &&
                 (fieldValue.Contains("\r") || fieldValue.Contains("\n")))
             {
-                quotesRequired = true;
+                areQuotesRequired = true;
                 fieldValue = fieldValue.Replace("\r\n", CarriageReturnAndLineFeedReplacement);
                 fieldValue = fieldValue.Replace("\r", CarriageReturnAndLineFeedReplacement);
                 fieldValue = fieldValue.Replace("\n", CarriageReturnAndLineFeedReplacement);
             }
 
             writer.Write( /*string.Format*/
-                "{0}{1}{0}{2}", quotesRequired || escapeQuotes ? "\"" : string.Empty, fieldValue,
+                "{0}{1}{0}{2}", areQuotesRequired || shouldEscapeQuotes ? "\"" : string.Empty, fieldValue,
                 i < fields.Count - 1 ? "," : string.Empty);
         }
 
