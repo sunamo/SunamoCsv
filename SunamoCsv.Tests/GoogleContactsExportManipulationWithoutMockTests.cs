@@ -1,3 +1,4 @@
+// variables names: ok
 using SunamoCsv.Data;
 using SunamoFileIO;
 using SunamoShared.Helpers.Number;
