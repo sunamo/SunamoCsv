@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoCsv.Data;
 
 public partial class GoogleContactExportRow : INotifyPropertyChanged
