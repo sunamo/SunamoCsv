@@ -5,3 +5,4 @@ global using System;
 global using Xunit;
 
 global using SunamoCsv;
+global using SunamoNumbers;
