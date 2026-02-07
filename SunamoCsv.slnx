@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SunamoCsv.Tests\\SunamoCsv.Tests.csproj" />
+  <Project Path="RunnerCsv\\RunnerCsv.csproj" />
+  <Project Path="SunamoCsv\SunamoCsv.csproj" />
+</Solution>
