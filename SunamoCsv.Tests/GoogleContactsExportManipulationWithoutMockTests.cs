@@ -16,11 +16,7 @@ public class GoogleContactsExportManipulationWithoutMockTests
     /// </summary>
     //[Fact]
     public
-#if ASYNC
 async Task
-#else
-    void
-#endif
 ParseGoogleFormatGoogleContactsTest()
     {
         var filePath = @"D:\_Test\sunamo\SunamoCsv\contacts.csv";
@@ -29,9 +25,7 @@ ParseGoogleFormatGoogleContactsTest()
         var propertyNames = row.GetType().GetProperties().Select(property => property.Name);
 
         var fileContent =
-#if ASYNC
 await
-#endif
 TF.ReadAllText(filePath);
 
         CsvFile csv = new CsvFile();
@@ -56,11 +50,7 @@ TF.ReadAllText(filePath);
     /// </summary>
     //[Fact]
     public
-#if ASYNC
 async Task
-#else
-    void
-#endif
 ParseOutlookFormatGoogleContactsTest()
     {
         var filePath = @"D:\_Test\sunamo\SunamoCsv\contacts_Outlook.csv";
@@ -69,9 +59,7 @@ ParseOutlookFormatGoogleContactsTest()
         var propertyNames = row.GetType().GetProperties().Select(property => property.Name);
 
         var fileContent =
-#if ASYNC
 await
-#endif
 TF.ReadAllText(filePath);
 
         CsvFile csv = new CsvFile();
