@@ -1,5 +1,8 @@
 namespace SunamoCsv.Data;
 
+/// <summary>
+///     Represents a single row from Google Contacts export CSV file
+/// </summary>
 public partial class GoogleContactExportRow : INotifyPropertyChanged
 {
     private string additionalName = "";
@@ -58,7 +61,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
     private string website1Type = "";
     private string website1Value = "";
     private string yomiName = "";
-
+    /// <summary>Gets or sets the full name</summary>
     public string Name
     {
         get => name;
@@ -69,6 +72,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the given name (first name)</summary>
     public string GivenName
     {
         get => givenName;
@@ -79,6 +83,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the additional name (middle name)</summary>
     public string AdditionalName
     {
         get => additionalName;
@@ -89,6 +94,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the family name (last name)</summary>
     public string FamilyName
     {
         get => familyName;
@@ -99,6 +105,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the phonetic name (Yomi)</summary>
     public string YomiName
     {
         get => yomiName;
@@ -109,6 +116,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the phonetic given name (Yomi)</summary>
     public string GivenNameYomi
     {
         get => givenNameYomi;
@@ -119,6 +127,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the phonetic additional name (Yomi)</summary>
     public string AdditionalNameYomi
     {
         get => additionalNameYomi;
@@ -129,6 +138,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the phonetic family name (Yomi)</summary>
     public string FamilyNameYomi
     {
         get => familyNameYomi;
@@ -139,6 +149,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the name prefix (e.g., Mr., Dr.)</summary>
     public string NamePrefix
     {
         get => namePrefix;
@@ -149,6 +160,7 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>Gets or sets the name suffix (e.g., Jr., Sr.)</summary>
     public string NameSuffix
     {
         get => nameSuffix;

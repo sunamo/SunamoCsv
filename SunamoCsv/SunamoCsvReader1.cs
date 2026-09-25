@@ -1,9 +1,16 @@
 namespace SunamoCsv;
 
-// Používat CsvFile místo toho
-// Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
+/// <summary>
+///     Používat CsvFile místo toho
+///     Class to read csv content from various sources
+///     Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
+/// </summary>
 public sealed partial class SunamoCsvReader : IDisposable
 {
+    /// <summary>
+    ///     Parses a csv line
+    /// </summary>
+    /// <param name = "line">Line</param>
     private void ParseLine(string line)
     {
         Fields = new List<string>();
@@ -61,6 +68,9 @@ public sealed partial class SunamoCsvReader : IDisposable
             Fields.Add(TrimColumns ? _columnBuilder.ToString().Trim() : _columnBuilder.ToString());
     }
 
+    /// <summary>
+    ///     Disposes of all unmanaged resources
+    /// </summary>
     public void Dispose()
     {
         if (_streamReader != null)

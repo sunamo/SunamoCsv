@@ -1,6 +1,9 @@
 namespace SunamoCsv;
 
-// Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
+/// <summary>
+///     Class to write data to a csv file
+///     Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
+/// </summary>
 public sealed class CsvWriter : IDisposable
 {
     #region Members
@@ -11,8 +14,15 @@ public sealed class CsvWriter : IDisposable
 
     #region Properties
 
+    /// <summary>
+    ///     Gets or sets whether carriage returns and line feeds should be removed from
+    ///     field values, the default is true
+    /// </summary>
     public bool ReplaceCarriageReturnsAndLineFeedsFromFieldValues { get; set; } = true;
 
+    /// <summary>
+    ///     Gets or sets what the carriage return and line feed replacement characters should be
+    /// </summary>
     public string CarriageReturnAndLineFeedReplacement { get; set; } = ",";
 
     #endregion Properties
@@ -21,11 +31,22 @@ public sealed class CsvWriter : IDisposable
 
     #region CsvFile write methods
 
+    /// <summary>
+    ///     Writes csv content to a file
+    /// </summary>
+    /// <param name="csvFile">CsvFile</param>
+    /// <param name="filePath">File path</param>
     public void WriteCsv(CsvFile csvFile, string filePath)
     {
         WriteCsv(csvFile, filePath, (Encoding?)null);
     }
 
+    /// <summary>
+    ///     Writes csv content to a file
+    /// </summary>
+    /// <param name="csvFile">CsvFile</param>
+    /// <param name="filePath">File path</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
     public void WriteCsv(CsvFile csvFile, string filePath, Encoding? encoding)
     {
         if (File.Exists(filePath))
@@ -39,11 +60,22 @@ public sealed class CsvWriter : IDisposable
         }
     }
 
+    /// <summary>
+    ///     Writes csv content to a stream
+    /// </summary>
+    /// <param name="csvFile">CsvFile</param>
+    /// <param name="stream">Stream</param>
     public void WriteCsv(CsvFile csvFile, Stream stream)
     {
         WriteCsv(csvFile, stream, (Encoding?)null);
     }
 
+    /// <summary>
+    ///     Writes csv content to a stream
+    /// </summary>
+    /// <param name="csvFile">CsvFile</param>
+    /// <param name="stream">Stream</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
     public void WriteCsv(CsvFile csvFile, Stream stream, Encoding? encoding)
     {
         stream.Position = 0;
@@ -53,6 +85,12 @@ public sealed class CsvWriter : IDisposable
         stream.Position = 0;
     }
 
+    /// <summary>
+    ///     Writes csv content to a string
+    /// </summary>
+    /// <param name="csvFile">CsvFile</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
+    /// <returns>Csv content in a string</returns>
     public string WriteCsv(CsvFile csvFile, Encoding? encoding)
     {
         var content = string.Empty;
@@ -82,11 +120,22 @@ public sealed class CsvWriter : IDisposable
 
     #region DataTable write methods
 
+    /// <summary>
+    ///     Writes a DataTable to a file
+    /// </summary>
+    /// <param name="dataTable">DataTable</param>
+    /// <param name="filePath">File path</param>
     public void WriteCsv(DataTable dataTable, string filePath)
     {
         WriteCsv(dataTable, filePath, (Encoding?)null);
     }
 
+    /// <summary>
+    ///     Writes a DataTable to a file
+    /// </summary>
+    /// <param name="dataTable">DataTable</param>
+    /// <param name="filePath">File path</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
     public void WriteCsv(DataTable dataTable, string filePath, Encoding? encoding)
     {
         if (File.Exists(filePath))
@@ -100,11 +149,22 @@ public sealed class CsvWriter : IDisposable
         }
     }
 
+    /// <summary>
+    ///     Writes a DataTable to a stream
+    /// </summary>
+    /// <param name="dataTable">DataTable</param>
+    /// <param name="stream">Stream</param>
     public void WriteCsv(DataTable dataTable, Stream stream)
     {
         WriteCsv(dataTable, stream, (Encoding?)null);
     }
 
+    /// <summary>
+    ///     Writes a DataTable to a stream
+    /// </summary>
+    /// <param name="dataTable">DataTable</param>
+    /// <param name="stream">Stream</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
     public void WriteCsv(DataTable dataTable, Stream stream, Encoding? encoding)
     {
         stream.Position = 0;
@@ -114,6 +174,12 @@ public sealed class CsvWriter : IDisposable
         stream.Position = 0;
     }
 
+    /// <summary>
+    ///     Writes the DataTable to a string
+    /// </summary>
+    /// <param name="dataTable">DataTable</param>
+    /// <param name="encoding">Encoding (null for UTF8)</param>
+    /// <returns>Csv content in a string</returns>
     public string WriteCsv(DataTable dataTable, Encoding? encoding)
     {
         var content = string.Empty;
@@ -141,6 +207,11 @@ public sealed class CsvWriter : IDisposable
 
     #endregion DataTable write methods
 
+    /// <summary>
+    ///     Writes the Csv File
+    /// </summary>
+    /// <param name="csvFile">CsvFile</param>
+    /// <param name="writer">TextWriter</param>
     private void WriteToStream(CsvFile csvFile, TextWriter writer)
     {
         if (csvFile.Headers.Count > 0)
@@ -149,6 +220,11 @@ public sealed class CsvWriter : IDisposable
         csvFile.Records.ForEach(record => WriteRecord(record.Fields, writer));
     }
 
+    /// <summary>
+    ///     Writes the Csv File
+    /// </summary>
+    /// <param name="dataTable">DataTable</param>
+    /// <param name="writer">TextWriter</param>
     private void WriteToStream(DataTable dataTable, TextWriter writer)
     {
         var fields = (from DataColumn column in dataTable.Columns select column.ColumnName).ToList();
@@ -162,6 +238,11 @@ public sealed class CsvWriter : IDisposable
         }
     }
 
+    /// <summary>
+    ///     Writes the record to the underlying stream
+    /// </summary>
+    /// <param name="fields">Fields</param>
+    /// <param name="writer">TextWriter</param>
     private void WriteRecord(IList<string> fields, TextWriter writer)
     {
         for (var i = 0; i < fields.Count; i++)
@@ -187,6 +268,9 @@ public sealed class CsvWriter : IDisposable
         writer.WriteLine();
     }
 
+    /// <summary>
+    ///     Disposes of all unmanaged resources
+    /// </summary>
     public void Dispose()
     {
         if (_streamWriter == null)
