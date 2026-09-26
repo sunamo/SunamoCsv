@@ -107,7 +107,7 @@ public sealed partial class CsvFile
         get
         {
             if (recordIndex > Records.Count - 1)
-                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
+                throw new Exception($"There is no record at index {recordIndex}.");
             return Records[recordIndex];
         }
     }
@@ -122,20 +122,20 @@ public sealed partial class CsvFile
         get
         {
             if (recordIndex > Records.Count - 1)
-                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
+                throw new Exception($"There is no record at index {recordIndex}.");
             var record = Records[recordIndex];
             if (fieldIndex > record.Fields.Count - 1)
-                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                throw new Exception($"There is no field at index {fieldIndex} in record {recordIndex}.");
             return record.Fields[fieldIndex];
         }
 
         set
         {
             if (recordIndex > Records.Count - 1)
-                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
+                throw new Exception($"There is no record at index {recordIndex}.");
             var record = Records[recordIndex];
             if (fieldIndex > record.Fields.Count - 1)
-                throw new Exception(string.Format("There is no field at index {0}.", fieldIndex));
+                throw new Exception($"There is no field at index {fieldIndex}.");
             record.Fields[fieldIndex] = value;
         }
     }
@@ -150,7 +150,7 @@ public sealed partial class CsvFile
         get
         {
             if (recordIndex > Records.Count - 1)
-                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
+                throw new Exception($"There is no record at index {recordIndex}.");
             var record = Records[recordIndex];
             var fieldIndex = -1;
             for (var i = 0; i < Headers.Count; i++)
@@ -162,16 +162,16 @@ public sealed partial class CsvFile
             }
 
             if (fieldIndex == -1)
-                throw new Exception(string.Format("There is no field header with the name '{0}'", fieldName));
+                throw new Exception($"There is no field header with the name '{fieldName}'");
             if (fieldIndex > record.Fields.Count - 1)
-                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                throw new Exception($"There is no field at index {fieldIndex} in record {recordIndex}.");
             return record.Fields[fieldIndex];
         }
 
         set
         {
             if (recordIndex > Records.Count - 1)
-                throw new Exception(string.Format("There is no record at index {0}.", recordIndex));
+                throw new Exception($"There is no record at index {recordIndex}.");
             var record = Records[recordIndex];
             var fieldIndex = -1;
             for (var i = 0; i < Headers.Count; i++)
@@ -183,9 +183,9 @@ public sealed partial class CsvFile
             }
 
             if (fieldIndex == -1)
-                throw new Exception(string.Format("There is no field header with the name '{0}'", fieldName));
+                throw new Exception($"There is no field header with the name '{fieldName}'");
             if (fieldIndex > record.Fields.Count - 1)
-                throw new Exception(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                throw new Exception($"There is no field at index {fieldIndex} in record {recordIndex}.");
             record.Fields[fieldIndex] = value;
         }
     }

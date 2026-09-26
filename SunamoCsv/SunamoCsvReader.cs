@@ -61,12 +61,12 @@ public sealed partial class SunamoCsvReader : IDisposable
     /// <summary>
     ///     Gets the field count or returns null if no fields have been read
     /// </summary>
-    public int? FieldCount => Fields != null ? Fields.Count : null;
-
     /// <summary>
     ///     Initialises the reader to work from a file
     /// </summary>
     /// <param name = "filePath">File path</param>
+    public int? FieldCount => Fields?.Count;
+
     public SunamoCsvReader(string filePath)
     {
         _type = TypeSource.File;
@@ -124,7 +124,7 @@ public sealed partial class SunamoCsvReader : IDisposable
     private void Initialise(string filePath, Encoding encoding)
     {
         if (!File.Exists(filePath))
-            throw new Exception( /*string.Format*/string.Format("The file '{0}' does not exist.", filePath));
+            throw new Exception(string.Format("The file '{0}' does not exist.", filePath));
         _fileStream = File.OpenRead(filePath);
         Initialise(_fileStream, encoding);
     }
@@ -137,7 +137,7 @@ public sealed partial class SunamoCsvReader : IDisposable
     private void Initialise(Stream stream, Encoding encoding)
     {
         if (stream == null)
-            throw new Exception("The supplied stream is null" + ".");
+            throw new Exception("The supplied stream is null.");
         _stream = stream;
         _stream.Position = 0;
         _encoding = encoding ?? Encoding.UTF8;
@@ -152,7 +152,7 @@ public sealed partial class SunamoCsvReader : IDisposable
     private void Initialise(Encoding? encoding, string csvContent)
     {
         if (csvContent == null)
-            throw new Exception("The supplied csvContent is null" + ".");
+            throw new Exception("The supplied csvContent is null.");
         _encoding = encoding ?? Encoding.UTF8;
         _memoryStream = new MemoryStream(csvContent.Length);
         _streamWriter = new StreamWriter(_memoryStream);

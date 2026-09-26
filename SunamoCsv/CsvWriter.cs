@@ -260,7 +260,7 @@ public sealed class CsvWriter : IDisposable
                 fieldValue = fieldValue.Replace("\n", CarriageReturnAndLineFeedReplacement);
             }
 
-            writer.Write( /*string.Format*/
+            writer.Write(
                 "{0}{1}{0}{2}", areQuotesRequired || shouldEscapeQuotes ? "\"" : string.Empty, fieldValue,
                 i < fields.Count - 1 ? "," : string.Empty);
         }
