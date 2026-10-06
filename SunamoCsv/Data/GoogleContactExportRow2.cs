@@ -2,7 +2,6 @@ namespace SunamoCsv.Data;
 
 public partial class GoogleContactExportRow : INotifyPropertyChanged
 {
-    /// <summary>Gets or sets the address street</summary>
     public string Address1Street
     {
         get => address1Street;
@@ -13,7 +12,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the address city</summary>
     public string Address1City
     {
         get => address1City;
@@ -24,7 +22,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the address PO Box</summary>
     public string Address1POBox
     {
         get => address1POBox;
@@ -35,7 +32,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the address region</summary>
     public string Address1Region
     {
         get => address1Region;
@@ -46,7 +42,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the address postal code</summary>
     public string Address1PostalCode
     {
         get => address1PostalCode;
@@ -57,7 +52,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the address country</summary>
     public string Address1Country
     {
         get => address1Country;
@@ -68,7 +62,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the address extended information</summary>
     public string Address1ExtendedAddress
     {
         get => address1ExtendedAddress;
@@ -79,7 +72,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the organization type</summary>
     public string Organization1Type
     {
         get => organization1Type;
@@ -90,7 +82,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the organization name</summary>
     public string Organization1Name
     {
         get => organization1Name;
@@ -101,7 +92,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the phonetic organization name (Yomi)</summary>
     public string Organization1YomiName
     {
         get => organization1YomiName;
@@ -112,7 +102,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the organization title/position</summary>
     public string Organization1Title
     {
         get => organization1Title;
@@ -123,7 +112,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the organization department</summary>
     public string Organization1Department
     {
         get => organization1Department;
@@ -134,7 +122,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the organization symbol</summary>
     public string Organization1Symbol
     {
         get => organization1Symbol;
@@ -145,7 +132,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the organization location</summary>
     public string Organization1Location
     {
         get => organization1Location;
@@ -156,7 +142,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the organization job description</summary>
     public string Organization1JobDescription
     {
         get => organization1JobDescription;
@@ -167,7 +152,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the website type</summary>
     public string Website1Type
     {
         get => website1Type;
@@ -178,7 +162,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the website URL</summary>
     public string Website1Value
     {
         get => website1Value;
@@ -189,7 +172,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the first custom field type</summary>
     public string CustomField1Type
     {
         get => customField1Type;
@@ -200,7 +182,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the first custom field value</summary>
     public string CustomField1Value
     {
         get => customField1Value;
@@ -211,7 +192,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the second custom field type</summary>
     public string CustomField2Type
     {
         get => customField2Type;
@@ -222,7 +202,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Gets or sets the second custom field value</summary>
     public string CustomField2Value
     {
         get => customField2Value;
@@ -233,7 +212,6 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
-    /// <summary>Occurs when a property value changes</summary>
     public event PropertyChangedEventHandler? PropertyChanged;
     private void OnPropertyChanged(string propName)
     {
