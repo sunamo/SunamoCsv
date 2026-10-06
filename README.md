@@ -1,5 +1,10 @@
 # SunamoCsv
 
+## Short description
+
+Knihovna pro práci se soubory CSV (hodnoty oddělené čárkou) v .NET.
+
+
 Working with CSV (comma-separated values)
 
 ## Overview
