@@ -1,6 +1,6 @@
 namespace SunamoCsv;
 
-// Používat CsvFile místo toho
+// Use CsvFile instead
 // Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
 public sealed partial class SunamoCsvReader : IDisposable
 {
