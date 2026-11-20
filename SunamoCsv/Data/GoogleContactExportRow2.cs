@@ -2,6 +2,9 @@ namespace SunamoCsv.Data;
 
 public partial class GoogleContactExportRow : INotifyPropertyChanged
 {
+    /// <summary>
+    /// The address 1 street.
+    /// </summary>
     public string Address1Street
     {
         get => address1Street;
@@ -12,6 +15,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 city.
+    /// </summary>
     public string Address1City
     {
         get => address1City;
@@ -22,6 +28,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 PO box.
+    /// </summary>
     public string Address1POBox
     {
         get => address1POBox;
@@ -32,6 +41,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 region.
+    /// </summary>
     public string Address1Region
     {
         get => address1Region;
@@ -42,6 +54,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 postal code.
+    /// </summary>
     public string Address1PostalCode
     {
         get => address1PostalCode;
@@ -52,6 +67,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 country.
+    /// </summary>
     public string Address1Country
     {
         get => address1Country;
@@ -62,6 +80,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 extended address.
+    /// </summary>
     public string Address1ExtendedAddress
     {
         get => address1ExtendedAddress;
@@ -72,6 +93,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 type.
+    /// </summary>
     public string Organization1Type
     {
         get => organization1Type;
@@ -82,6 +106,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 name.
+    /// </summary>
     public string Organization1Name
     {
         get => organization1Name;
@@ -92,6 +119,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 yomi name.
+    /// </summary>
     public string Organization1YomiName
     {
         get => organization1YomiName;
@@ -102,6 +132,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 title.
+    /// </summary>
     public string Organization1Title
     {
         get => organization1Title;
@@ -112,6 +145,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 department.
+    /// </summary>
     public string Organization1Department
     {
         get => organization1Department;
@@ -122,6 +158,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 symbol.
+    /// </summary>
     public string Organization1Symbol
     {
         get => organization1Symbol;
@@ -132,6 +171,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 location.
+    /// </summary>
     public string Organization1Location
     {
         get => organization1Location;
@@ -142,6 +184,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The organization 1 job description.
+    /// </summary>
     public string Organization1JobDescription
     {
         get => organization1JobDescription;
@@ -152,6 +197,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The website 1 type.
+    /// </summary>
     public string Website1Type
     {
         get => website1Type;
@@ -162,6 +210,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The website 1 value.
+    /// </summary>
     public string Website1Value
     {
         get => website1Value;
@@ -172,6 +223,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The custom field 1 type.
+    /// </summary>
     public string CustomField1Type
     {
         get => customField1Type;
@@ -182,6 +236,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The custom field 1 value.
+    /// </summary>
     public string CustomField1Value
     {
         get => customField1Value;
@@ -192,6 +249,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The custom field 2 type.
+    /// </summary>
     public string CustomField2Type
     {
         get => customField2Type;
@@ -202,6 +262,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The custom field 2 value.
+    /// </summary>
     public string CustomField2Value
     {
         get => customField2Value;
@@ -212,6 +275,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The property changed.
+    /// </summary>
     public event PropertyChangedEventHandler? PropertyChanged;
     private void OnPropertyChanged(string propName)
     {

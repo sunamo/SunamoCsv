@@ -1,6 +1,9 @@
 namespace SunamoCsv;
 
 // Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
+/// <summary>
+/// Represents the csv writer type.
+/// </summary>
 public sealed class CsvWriter : IDisposable
 {
     #region Members
@@ -11,8 +14,14 @@ public sealed class CsvWriter : IDisposable
 
     #region Properties
 
+    /// <summary>
+    /// Gets or sets the replace carriage returns and line feeds from field values.
+    /// </summary>
     public bool ReplaceCarriageReturnsAndLineFeedsFromFieldValues { get; set; } = true;
 
+    /// <summary>
+    /// Gets or sets the carriage return and line feed replacement.
+    /// </summary>
     public string CarriageReturnAndLineFeedReplacement { get; set; } = ",";
 
     #endregion Properties
@@ -21,11 +30,22 @@ public sealed class CsvWriter : IDisposable
 
     #region CsvFile write methods
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="csvFile">The csv file.</param>
+    /// <param name="filePath">The file path.</param>
+    /// <returns>The write csv result.</returns>
     public void WriteCsv(CsvFile csvFile, string filePath)
     {
         WriteCsv(csvFile, filePath, (Encoding?)null);
     }
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="csvFile">The csv file.</param>
+    /// <param name="filePath">The file path.</param>
     public void WriteCsv(CsvFile csvFile, string filePath, Encoding? encoding)
     {
         if (File.Exists(filePath))
@@ -39,11 +59,21 @@ public sealed class CsvWriter : IDisposable
         }
     }
 
+    /// <summary>
+    /// Initializes a new instance of the write csv class.
+    /// </summary>
+    /// <param name="csvFile">The csv file.</param>
+    /// <param name="writer">The writer.</param>
     public void WriteCsv(CsvFile csvFile, Stream stream)
     {
         WriteCsv(csvFile, stream, (Encoding?)null);
     }
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="csvFile">The csv file.</param>
+    /// <param name="stream">The stream.</param>
     public void WriteCsv(CsvFile csvFile, Stream stream, Encoding? encoding)
     {
         stream.Position = 0;
@@ -53,6 +83,12 @@ public sealed class CsvWriter : IDisposable
         stream.Position = 0;
     }
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <param name="Encoding.UTF8">The encoding UTF 8.</param>
+    /// <returns>The write csv result.</returns>
     public string WriteCsv(CsvFile csvFile, Encoding? encoding)
     {
         var content = string.Empty;
@@ -82,11 +118,22 @@ public sealed class CsvWriter : IDisposable
 
     #region DataTable write methods
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="dataTable">The data table.</param>
+    /// <param name="filePath">The file path.</param>
+    /// <returns>The write csv result.</returns>
     public void WriteCsv(DataTable dataTable, string filePath)
     {
         WriteCsv(dataTable, filePath, (Encoding?)null);
     }
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="dataTable">The data table.</param>
+    /// <param name="filePath">The file path.</param>
     public void WriteCsv(DataTable dataTable, string filePath, Encoding? encoding)
     {
         if (File.Exists(filePath))
@@ -100,11 +147,21 @@ public sealed class CsvWriter : IDisposable
         }
     }
 
+    /// <summary>
+    /// Initializes a new instance of the write csv class.
+    /// </summary>
+    /// <param name="dataTable">The data table.</param>
+    /// <param name="writer">The writer.</param>
     public void WriteCsv(DataTable dataTable, Stream stream)
     {
         WriteCsv(dataTable, stream, (Encoding?)null);
     }
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="dataTable">The data table.</param>
+    /// <param name="stream">The stream.</param>
     public void WriteCsv(DataTable dataTable, Stream stream, Encoding? encoding)
     {
         stream.Position = 0;
@@ -114,6 +171,12 @@ public sealed class CsvWriter : IDisposable
         stream.Position = 0;
     }
 
+    /// <summary>
+    /// Write csv.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <param name="Encoding.UTF8">The encoding UTF 8.</param>
+    /// <returns>The write csv result.</returns>
     public string WriteCsv(DataTable dataTable, Encoding? encoding)
     {
         var content = string.Empty;
@@ -187,6 +250,10 @@ public sealed class CsvWriter : IDisposable
         writer.WriteLine();
     }
 
+    /// <summary>
+    /// Dispose.
+    /// </summary>
+    /// <returns>The dispose result.</returns>
     public void Dispose()
     {
         if (_streamWriter == null)

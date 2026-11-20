@@ -2,6 +2,9 @@ namespace SunamoCsv.Data;
 
 public partial class GoogleContactExportRow : INotifyPropertyChanged
 {
+    /// <summary>
+    /// The initials.
+    /// </summary>
     public string Initials
     {
         get => initials;
@@ -12,6 +15,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The nickname.
+    /// </summary>
     public string Nickname
     {
         get => nickname;
@@ -22,6 +28,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The short name.
+    /// </summary>
     public string ShortName
     {
         get => shortName;
@@ -32,6 +41,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The maiden name.
+    /// </summary>
     public string MaidenName
     {
         get => maidenName;
@@ -42,6 +54,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The birthday.
+    /// </summary>
     public string Birthday
     {
         get => birthday;
@@ -52,6 +67,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The gender.
+    /// </summary>
     public string Gender
     {
         get => gender;
@@ -62,6 +80,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The location.
+    /// </summary>
     public string Location
     {
         get => location;
@@ -72,6 +93,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The billing information.
+    /// </summary>
     public string BillingInformation
     {
         get => billingInformation;
@@ -82,6 +106,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The directory server.
+    /// </summary>
     public string DirectoryServer
     {
         get => directoryServer;
@@ -92,6 +119,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The mileage.
+    /// </summary>
     public string Mileage
     {
         get => mileage;
@@ -102,6 +132,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The occupation.
+    /// </summary>
     public string Occupation
     {
         get => occupation;
@@ -112,6 +145,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The hobby.
+    /// </summary>
     public string Hobby
     {
         get => hobby;
@@ -122,6 +158,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The sensitivity.
+    /// </summary>
     public string Sensitivity
     {
         get => sensitivity;
@@ -132,6 +171,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The priority.
+    /// </summary>
     public string Priority
     {
         get => priority;
@@ -142,6 +184,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The subject.
+    /// </summary>
     public string Subject
     {
         get => subject;
@@ -152,6 +197,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The notes.
+    /// </summary>
     public string Notes
     {
         get => notes;
@@ -162,6 +210,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The language.
+    /// </summary>
     public string Language
     {
         get => language;
@@ -172,6 +223,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The photo.
+    /// </summary>
     public string Photo
     {
         get => photo;
@@ -182,6 +236,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The group membership.
+    /// </summary>
     public string GroupMembership
     {
         get => groupMembership;
@@ -192,6 +249,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The e mail 1 type.
+    /// </summary>
     public string EMail1Type
     {
         get => eMail1Type;
@@ -202,6 +262,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The e mail 1 value.
+    /// </summary>
     public string EMail1Value
     {
         get => eMail1Value;
@@ -212,6 +275,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The phone 1 type.
+    /// </summary>
     public string Phone1Type
     {
         get => phone1Type;
@@ -222,6 +288,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The phone 1 value.
+    /// </summary>
     public string Phone1Value
     {
         get => phone1Value;
@@ -232,6 +301,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 type.
+    /// </summary>
     public string Address1Type
     {
         get => address1Type;
@@ -242,6 +314,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The address 1 formatted.
+    /// </summary>
     public string Address1Formatted
     {
         get => address1Formatted;

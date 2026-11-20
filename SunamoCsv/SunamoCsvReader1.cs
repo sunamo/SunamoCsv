@@ -61,6 +61,9 @@ public sealed partial class SunamoCsvReader : IDisposable
             Fields.Add(TrimColumns ? _columnBuilder.ToString().Trim() : _columnBuilder.ToString());
     }
 
+    /// <summary>
+    /// Dispose.
+    /// </summary>
     public void Dispose()
     {
         if (_streamReader != null)

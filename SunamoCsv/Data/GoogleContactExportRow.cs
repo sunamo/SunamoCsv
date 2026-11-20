@@ -1,5 +1,8 @@
 namespace SunamoCsv.Data;
 
+/// <summary>
+/// Represents the google contact export row type.
+/// </summary>
 public partial class GoogleContactExportRow : INotifyPropertyChanged
 {
     private string additionalName = "";
@@ -59,6 +62,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
     private string website1Value = "";
     private string yomiName = "";
 
+    /// <summary>
+    /// The name.
+    /// </summary>
     public string Name
     {
         get => name;
@@ -69,6 +75,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The given name.
+    /// </summary>
     public string GivenName
     {
         get => givenName;
@@ -79,6 +88,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The additional name.
+    /// </summary>
     public string AdditionalName
     {
         get => additionalName;
@@ -89,6 +101,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The family name.
+    /// </summary>
     public string FamilyName
     {
         get => familyName;
@@ -99,6 +114,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The yomi name.
+    /// </summary>
     public string YomiName
     {
         get => yomiName;
@@ -109,6 +127,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The given name yomi.
+    /// </summary>
     public string GivenNameYomi
     {
         get => givenNameYomi;
@@ -119,6 +140,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The additional name yomi.
+    /// </summary>
     public string AdditionalNameYomi
     {
         get => additionalNameYomi;
@@ -129,6 +153,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The family name yomi.
+    /// </summary>
     public string FamilyNameYomi
     {
         get => familyNameYomi;
@@ -139,6 +166,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The name prefix.
+    /// </summary>
     public string NamePrefix
     {
         get => namePrefix;
@@ -149,6 +179,9 @@ public partial class GoogleContactExportRow : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// The name suffix.
+    /// </summary>
     public string NameSuffix
     {
         get => nameSuffix;
