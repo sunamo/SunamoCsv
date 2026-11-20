@@ -29,7 +29,6 @@ await
 TF.ReadAllText(filePath);
 
         CsvFile csv = new CsvFile();
-        //CsvReader csvReader = new CsvReader();
         csv.Populate(true, fileContent);
 
         var propertyCount = propertyNames.Count();
@@ -38,7 +37,6 @@ TF.ReadAllText(filePath);
         foreach (var item in propertyNames)
         {
             var stringList = LinearHelper.GetStringListFromTo(0, propertyCount - 1);
-            //var intList = stringList.ConvertAll(text => int.Parse( CAG.ToList<int>(stringList);
 
             var entries = csv.Strings(0);
             columnData.Add(entries);
@@ -63,7 +61,6 @@ await
 TF.ReadAllText(filePath);
 
         CsvFile csv = new CsvFile();
-        //CsvReader csvReader = new CsvReader();
         csv.Populate(true, fileContent);
 
         var propertyCount = propertyNames.Count();
